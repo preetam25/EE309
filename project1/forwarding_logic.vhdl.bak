@@ -1,0 +1,23 @@
+library std;
+use std.standard.all;
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.std_logic_arith.all;	 
+use ieee.std_logic_unsigned.all;
+
+entity forwarding_logic is
+	port (idrr_ir, rrex_ir, exmem_ir, memwb_ir: in std_logic_vector(15 downto 0);
+		fwd_mux1, fwd_mux2: out std_logic_vector(1 downto 0);
+	);
+end entity forwarding_logic;
+
+architecture struct of forwarding_logic is
+
+begin
+	fwd_mux1 <= "01" when idrr_ir(15 downto 12) == rrex_ir(15 downto 12) and idrr_ir(11 downto 9) == rrex_ir(5 downto 3) else
+				"00";
+	fwd_mux2 <= "01" when idrr_ir(15 downto 12) == rrex_ir(15 downto 12) and idrr_ir(8 downto 6) == rrex_ir(5 downto 3) else
+				"00";			
+end architecture struct;

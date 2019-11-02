@@ -1,5 +1,5 @@
 Analysis & Synthesis report for iitb-risc
-Thu Oct 31 21:18:18 2019
+Sat Nov  2 21:24:21 2019
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -42,13 +42,13 @@ agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Thu Oct 31 21:18:18 2019       ;
+; Analysis & Synthesis Status ; Successful - Sat Nov  2 21:24:21 2019       ;
 ; Quartus Prime Version       ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name               ; iitb-risc                                   ;
 ; Top-level Entity Name       ; forwarding_logic                            ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 39                                          ;
-; Total pins                  ; 68                                          ;
+; Total logic elements        ; 88                                          ;
+; Total pins                  ; 79                                          ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -146,38 +146,38 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------+---------+
 
 
-+---------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary             ;
-+---------------------------------------------+-----------+
-; Resource                                    ; Usage     ;
-+---------------------------------------------+-----------+
-; Total logic elements                        ; 39        ;
-;     -- Combinational with no register       ; 39        ;
-;     -- Register only                        ; 0         ;
-;     -- Combinational with a register        ; 0         ;
-;                                             ;           ;
-; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 31        ;
-;     -- 3 input functions                    ; 7         ;
-;     -- 2 input functions                    ; 1         ;
-;     -- 1 input functions                    ; 0         ;
-;     -- 0 input functions                    ; 0         ;
-;                                             ;           ;
-; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 39        ;
-;     -- arithmetic mode                      ; 0         ;
-;     -- qfbk mode                            ; 0         ;
-;     -- register cascade mode                ; 0         ;
-;     -- synchronous clear/load mode          ; 0         ;
-;     -- asynchronous clear/load mode         ; 0         ;
-;                                             ;           ;
-; Total registers                             ; 0         ;
-; I/O pins                                    ; 68        ;
-; Maximum fan-out node                        ; Equal10~1 ;
-; Maximum fan-out                             ; 5         ;
-; Total fan-out                               ; 151       ;
-; Average fan-out                             ; 1.41      ;
-+---------------------------------------------+-----------+
++----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary              ;
++---------------------------------------------+------------+
+; Resource                                    ; Usage      ;
++---------------------------------------------+------------+
+; Total logic elements                        ; 88         ;
+;     -- Combinational with no register       ; 88         ;
+;     -- Register only                        ; 0          ;
+;     -- Combinational with a register        ; 0          ;
+;                                             ;            ;
+; Logic element usage by number of LUT inputs ;            ;
+;     -- 4 input functions                    ; 73         ;
+;     -- 3 input functions                    ; 8          ;
+;     -- 2 input functions                    ; 7          ;
+;     -- 1 input functions                    ; 0          ;
+;     -- 0 input functions                    ; 0          ;
+;                                             ;            ;
+; Logic elements by mode                      ;            ;
+;     -- normal mode                          ; 88         ;
+;     -- arithmetic mode                      ; 0          ;
+;     -- qfbk mode                            ; 0          ;
+;     -- register cascade mode                ; 0          ;
+;     -- synchronous clear/load mode          ; 0          ;
+;     -- asynchronous clear/load mode         ; 0          ;
+;                                             ;            ;
+; Total registers                             ; 0          ;
+; I/O pins                                    ; 79         ;
+; Maximum fan-out node                        ; rrex_ir[9] ;
+; Maximum fan-out                             ; 12         ;
+; Total fan-out                               ; 336        ;
+; Average fan-out                             ; 2.01       ;
++---------------------------------------------+------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -185,7 +185,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+------------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name      ; Library Name ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+------------------+--------------+
-; |forwarding_logic          ; 39 (39)     ; 0            ; 0          ; 68   ; 0            ; 39 (39)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |forwarding_logic   ; forwarding_logic ; work         ;
+; |forwarding_logic          ; 88 (88)     ; 0            ; 0          ; 79   ; 0            ; 88 (88)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |forwarding_logic   ; forwarding_logic ; work         ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -221,56 +221,38 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-    Info: Processing started: Thu Oct 31 21:18:03 2019
+    Info: Processing started: Sat Nov  2 21:24:07 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ee309_project1 -c iitb-risc
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 0 design units, including 0 entities, in source file hazard_detection_unit.vhdl
 Info (12021): Found 2 design units, including 1 entities, in source file forwarding_logic.vhdl
-    Info (12022): Found design unit 1: forwarding_logic-struct File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 16
+    Info (12022): Found design unit 1: forwarding_logic-struct File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 17
     Info (12023): Found entity 1: forwarding_logic File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 10
 Info (12127): Elaborating entity "forwarding_logic" for the top level hierarchy
-Warning (21074): Design contains 33 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "idrr_ir[0]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "idrr_ir[1]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "idrr_ir[2]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "idrr_ir[3]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "idrr_ir[4]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "idrr_ir[5]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
+Warning (21074): Design contains 15 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "rrex_ir[0]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
     Warning (15610): No output dependent on input pin "rrex_ir[1]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
     Warning (15610): No output dependent on input pin "rrex_ir[2]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "rrex_ir[6]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "rrex_ir[7]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "rrex_ir[8]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "rrex_ir[9]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "rrex_ir[10]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "rrex_ir[11]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
+    Warning (15610): No output dependent on input pin "rrex_ir[3]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
+    Warning (15610): No output dependent on input pin "rrex_ir[4]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
+    Warning (15610): No output dependent on input pin "rrex_ir[5]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
     Warning (15610): No output dependent on input pin "exmem_ir[0]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
     Warning (15610): No output dependent on input pin "exmem_ir[1]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
     Warning (15610): No output dependent on input pin "exmem_ir[2]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "exmem_ir[6]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "exmem_ir[7]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "exmem_ir[8]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "exmem_ir[9]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "exmem_ir[10]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "exmem_ir[11]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
     Warning (15610): No output dependent on input pin "memwb_ir[0]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
     Warning (15610): No output dependent on input pin "memwb_ir[1]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
     Warning (15610): No output dependent on input pin "memwb_ir[2]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "memwb_ir[6]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "memwb_ir[7]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "memwb_ir[8]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "memwb_ir[9]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "memwb_ir[10]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "memwb_ir[11]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-Info (21057): Implemented 107 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 64 input pins
-    Info (21059): Implemented 4 output pins
-    Info (21061): Implemented 39 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 35 warnings
-    Info: Peak virtual memory: 1211 megabytes
-    Info: Processing ended: Thu Oct 31 21:18:18 2019
-    Info: Elapsed time: 00:00:15
+    Warning (15610): No output dependent on input pin "wbdone_ir[0]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
+    Warning (15610): No output dependent on input pin "wbdone_ir[1]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
+    Warning (15610): No output dependent on input pin "wbdone_ir[2]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
+Info (21057): Implemented 167 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 73 input pins
+    Info (21059): Implemented 6 output pins
+    Info (21061): Implemented 88 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 17 warnings
+    Info: Peak virtual memory: 1210 megabytes
+    Info: Processing ended: Sat Nov  2 21:24:21 2019
+    Info: Elapsed time: 00:00:14
     Info: Total CPU time (on all processors): 00:00:34
 
 

@@ -1,9 +1,9 @@
-Analysis & Synthesis Status : Successful - Thu Oct 31 21:18:18 2019
+Analysis & Synthesis Status : Successful - Sat Nov  2 21:24:21 2019
 Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 Revision Name : iitb-risc
 Top-level Entity Name : forwarding_logic
 Family : MAX V
-Total logic elements : 39
-Total pins : 68
+Total logic elements : 88
+Total pins : 79
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )

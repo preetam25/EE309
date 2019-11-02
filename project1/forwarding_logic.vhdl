@@ -8,35 +8,36 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
 entity forwarding_logic is
-	port (idrr_ir, rrex_ir, exmem_ir, memwb_ir: in std_logic_vector(15 downto 0);
-		fwd_mux1, fwd_mux2: out std_logic_vector(1 downto 0)
+	port (rrex_ir, exmem_ir, memwb_ir, wbdone_ir: in std_logic_vector(15 downto 0);
+		exmem_addr, memwb_addr, wbdone_addr: in std_logic_vector(2 downto 0);
+		fwd_mux1, fwd_mux2: out std_logic_vector(2 downto 0)
 	);
 end entity forwarding_logic;
 
 architecture struct of forwarding_logic is
 
-alias rr_op : std_logic_vector(3 downto 0) is idrr_ir(15 downto 12); 
-alias rr_a : std_logic_vector(2 downto 0) is idrr_ir(11 downto 9);
-alias rr_b : std_logic_vector(2 downto 0) is idrr_ir(8 downto 6);
-alias rr_c : std_logic_vector(2 downto 0) is idrr_ir(5 downto 3); 
+alias rrex_op : std_logic_vector(3 downto 0) is rrex_ir(15 downto 12); 
+alias rrex_a : std_logic_vector(2 downto 0) is rrex_ir(11 downto 9);
+alias rrex_b : std_logic_vector(2 downto 0) is rrex_ir(8 downto 6);
+alias rrex_c : std_logic_vector(2 downto 0) is rrex_ir(5 downto 3); 
 --alias rr_type : std_logic_vector(1 downto 0) is idrr_ir(1 downto 0);
 
-alias ex_op : std_logic_vector(3 downto 0) is rrex_ir(15 downto 12); 
-alias ex_a : std_logic_vector(2 downto 0) is rrex_ir(11 downto 9);
-alias ex_b : std_logic_vector(2 downto 0) is rrex_ir(8 downto 6);
-alias ex_c : std_logic_vector(2 downto 0) is rrex_ir(5 downto 3); 
+alias exmem_op : std_logic_vector(3 downto 0) is exmem_ir(15 downto 12); 
+alias exmem_a : std_logic_vector(2 downto 0) is exmem_ir(11 downto 9);
+alias exmem_b : std_logic_vector(2 downto 0) is exmem_ir(8 downto 6);
+alias exmem_c : std_logic_vector(2 downto 0) is exmem_ir(5 downto 3); 
 --alias ex_type : std_logic_vector(1 downto 0) is rrex_ir(1 downto 0);
 
-alias mem_op : std_logic_vector(3 downto 0) is exmem_ir(15 downto 12); 
-alias mem_a : std_logic_vector(2 downto 0) is exmem_ir(11 downto 9);
-alias mem_b : std_logic_vector(2 downto 0) is exmem_ir(8 downto 6);
-alias mem_c : std_logic_vector(2 downto 0) is exmem_ir(5 downto 3); 
+alias memwb_op : std_logic_vector(3 downto 0) is memwb_ir(15 downto 12); 
+alias memwb_a : std_logic_vector(2 downto 0) is memwb_ir(11 downto 9);
+alias memwb_b : std_logic_vector(2 downto 0) is memwb_ir(8 downto 6);
+alias memwb_c : std_logic_vector(2 downto 0) is memwb_ir(5 downto 3); 
 --alias mem_type : std_logic_vector(1 downto 0) is exmem_ir(1 downto 0);
 
-alias wb_op : std_logic_vector(3 downto 0) is memwb_ir(15 downto 12); 
-alias wb_a : std_logic_vector(2 downto 0) is memwb_ir(11 downto 9);
-alias wb_b : std_logic_vector(2 downto 0) is memwb_ir(8 downto 6);
-alias wb_c : std_logic_vector(2 downto 0) is memwb_ir(5 downto 3); 
+alias wbdone_op : std_logic_vector(3 downto 0) is wbdone_ir(15 downto 12); 
+alias wbdone_a : std_logic_vector(2 downto 0) is wbdone_ir(11 downto 9);
+alias wbdone_b : std_logic_vector(2 downto 0) is wbdone_ir(8 downto 6);
+alias wbdone_c : std_logic_vector(2 downto 0) is wbdone_ir(5 downto 3); 
 --alias wb_type : std_logic_vector(1 downto 0) is memwb_ir(1 downto 0);
 
 constant add : std_logic_vector(3 downto 0) := "0000";
@@ -56,49 +57,136 @@ constant jal : std_logic_vector(3 downto 0) := "1000";
 --constant carry : std_logic_vector(1 downto 0) := "10"; 
 --constant zero : std_logic_vector(1 downto 0) := "01";
 
-constant actual : std_logic_vector(1 downto 0) := "00"; 
-constant ex : std_logic_vector(1 downto 0) := "01"; 
-constant mem : std_logic_vector(1 downto 0) := "10"; 
-constant wb : std_logic_vector(1 downto 0) := "11"; 
-
+constant actual : std_logic_vector(2 downto 0) := "000"; 
+constant ex : std_logic_vector(2 downto 0) := "001"; 
+constant mem : std_logic_vector(2 downto 0) := "010"; 
+constant wb : std_logic_vector(2 downto 0) := "011"; 
+constant spl : std_logic_vector(2 downto 0) := "100"; 
 
 begin
 	
 	fwd_mux1 <= ex when( 
-						   ((ex_op = add or ex_op = ndu) and (rr_op = adi or rr_op = add or rr_op = ndu or rr_op = sw or rr_op = beq) and ex_c = rr_a) 
-						or ((ex_op = lw or ex_op = jlr) and (rr_op = adi or rr_op = add or rr_op = ndu) and ex_c = rr_a)
-						or ((ex_op = lhi or ex_op = jal) and (rr_op = adi or rr_op = add or rr_op = ndu or rr_op = sw or rr_op = beq) and ex_c = rr_a) 
-						)else
+						   ((exmem_op = add or exmem_op = ndu) 
+						   	and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
+						   	and exmem_c = rrex_a) 
+						
+						or ((exmem_op = adi) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
+						   	and exmem_b = rrex_a)
+						
+						or ((exmem_op = jlr or exmem_op = lhi or exmem_op = jal) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
+						   	and exmem_a = rrex_a)	
+					)else
 				
 				mem when(
-						   ((mem_op = add or mem_op = ndu) and (rr_op = adi or rr_op = add or rr_op = ndu or rr_op = sw or rr_op = beq) and mem_c = rr_a) 
-						or ((mem_op = lw or mem_op = jlr) and (rr_op = adi or rr_op = add or rr_op = ndu) and ex_c = rr_a)
-						or ((mem_op = lhi or mem_op = jal) and (rr_op = adi or rr_op = add or rr_op = ndu or rr_op = sw or rr_op = beq) and mem_c = rr_a) 
-						)else
+						   ((memwb_op = add or memwb_op = ndu) 
+						   	and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
+						   	and memwb_c = rrex_a) 
+						
+						or ((memwb_op = adi) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
+						   	and memwb_b = rrex_a)
+						
+						or ((memwb_op = jlr or memwb_op = lw or memwb_op = lhi or memwb_op = jal) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
+						   	and memwb_a = rrex_a)
+						
+						or ((memwb_op = lm) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = sm) 
+						   	and memwb_addr = rrex_a) 
+					)else
 				
 				wb when(
-						   ((wb_op = add or wb_op = ndu) and (rr_op = adi or rr_op = add or rr_op = ndu or rr_op = sw or rr_op = beq) and wb_c = rr_a) 
-						or ((wb_op = lw or wb_op = jlr) and (rr_op = adi or rr_op = add or rr_op = ndu) and ex_c = rr_a)
-						or ((wb_op = lhi or wb_op = jal) and (rr_op = adi or rr_op = add or rr_op = ndu or rr_op = sw or rr_op = beq) and wb_c = rr_a) 
-						)else
-				
+						   ((wbdone_op = add or wbdone_op = ndu) 
+						   	and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
+						   	and wbdone_c = rrex_a) 
+						
+						or ((wbdone_op = adi) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
+						   	and wbdone_b = rrex_a)
+						
+						or ((wbdone_op = jlr or wbdone_op = lw or wbdone_op = lhi or wbdone_op = jal) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
+						   	and wbdone_a = rrex_a)
+						
+						or ((wbdone_op = lm) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = sm) 
+						   	and wbdone_addr = rrex_a)
+					)else
+
+				spl when(
+						   ((exmem_op = lw) 
+						   	and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
+						   	and exmem_a = rrex_a)
+						
+						or ((exmem_op = lm) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = sm) 
+						   	and exmem_addr = rrex_a)	
+					)else
+
 				actual;
 
-	fwd_mux2 <= ex when(
-						   (((ex_op = add or ex_op = ndu) and (rr_op = lw or rr_op = jlr or rr_op = add or rr_op = ndu or rr_op = sw or rr_op = beq) and ex_c = rr_b))
-						or ((ex_op = adi) and (rr_op = lw or rr_op = jlr or rr_op = add or rr_op = ndu) and ex_c = rr_b)
-						)else
+	fwd_mux2 <= ex when( 
+						   ((exmem_op = add or exmem_op = ndu) 
+						   	and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and exmem_c = rrex_b) 
+						
+						or ((exmem_op = adi) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and exmem_b = rrex_b)
+						
+						or ((exmem_op = jlr or exmem_op = lhi or exmem_op = jal) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and exmem_a = rrex_b)	
+					)else
 				
 				mem when(
-						   (((mem_op = add or mem_op = ndu) and (rr_op = lw or rr_op = jlr or rr_op = add or rr_op = ndu or rr_op = sw or rr_op = beq) and mem_c = rr_b))
-						or ((mem_op = adi) and (rr_op = lw or rr_op = jlr or rr_op = add or rr_op = ndu) and mem_c = rr_b)
-						)else
+						   ((memwb_op = add or memwb_op = ndu) 
+						   	and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and memwb_c = rrex_b) 
+						
+						or ((memwb_op = adi) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and memwb_b = rrex_b)
+						
+						or ((memwb_op = jlr or memwb_op = lw or memwb_op = lhi or memwb_op = jal) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and memwb_a = rrex_b)
+						
+						or ((memwb_op = lm) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and memwb_addr = rrex_b) 
+					)else
 				
 				wb when(
-						   (((wb_op = add or wb_op = ndu) and (rr_op = lw or rr_op = jlr or rr_op = add or rr_op = ndu or rr_op = sw or rr_op = beq) and wb_c = rr_b))
-						or ((wb_op = adi) and (rr_op = lw or rr_op = jlr or rr_op = add or rr_op = ndu) and wb_c = rr_b)
-						)else
-				
+						   ((wbdone_op = add or wbdone_op = ndu) 
+						   	and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and wbdone_c = rrex_b) 
+						
+						or ((wbdone_op = adi) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and wbdone_b = rrex_b)
+						
+						or ((wbdone_op = jlr or wbdone_op = lw or wbdone_op = lhi or wbdone_op = jal) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and wbdone_a = rrex_b)
+						
+						or ((wbdone_op = lm) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and wbdone_addr = rrex_b)
+					)else
+
+				spl when(
+						   ((exmem_op = lw) 
+						   	and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and exmem_a = rrex_b)
+						
+						or ((exmem_op = lm) 
+							and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
+						   	and exmem_addr = rrex_b)	
+					)else
+
 				actual;
 
 end architecture struct;

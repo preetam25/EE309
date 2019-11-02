@@ -66,146 +66,146 @@ CHIP  "iitb-risc"  ASSIGNED TO AN: 5M1270ZT144C5
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
 GND*                         : 1         :        :                   :         : 1         :                
-GND*                         : 2         :        :                   :         : 1         :                
-GND*                         : 3         :        :                   :         : 1         :                
+rrex_ir[4]                   : 2         : input  : 3.3-V LVTTL       :         : 1         : N              
+memwb_ir[2]                  : 3         : input  : 3.3-V LVTTL       :         : 1         : N              
 GND*                         : 4         :        :                   :         : 1         :                
 GND*                         : 5         :        :                   :         : 1         :                
-exmem_ir[8]                  : 6         : input  : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : 7         :        :                   :         : 1         :                
-rrex_ir[7]                   : 8         : input  : 3.3-V LVTTL       :         : 1         : N              
+rrex_ir[3]                   : 6         : input  : 3.3-V LVTTL       :         : 1         : N              
+wbdone_ir[0]                 : 7         : input  : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 8         :        :                   :         : 1         :                
 VCCIO1                       : 9         : power  :                   : 3.3V    : 1         :                
 GNDIO                        : 10        : gnd    :                   :         :           :                
 GNDIO                        : 11        : gnd    :                   :         :           :                
-rrex_ir[10]                  : 12        : input  : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : 13        :        :                   :         : 1         :                
-exmem_ir[1]                  : 14        : input  : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 12        :        :                   :         : 1         :                
+rrex_ir[0]                   : 13        : input  : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 14        :        :                   :         : 1         :                
 GND*                         : 15        :        :                   :         : 1         :                
-GND*                         : 16        :        :                   :         : 1         :                
+exmem_ir[1]                  : 16        : input  : 3.3-V LVTTL       :         : 1         : N              
 GNDINT                       : 17        : gnd    :                   :         :           :                
 GND*                         : 18        :        :                   :         : 1         :                
 VCCINT                       : 19        : power  :                   : 1.8V    :           :                
-GND*                         : 20        :        :                   :         : 1         :                
-exmem_ir[0]                  : 21        : input  : 3.3-V LVTTL       :         : 1         : N              
+memwb_ir[9]                  : 20        : input  : 3.3-V LVTTL       :         : 1         : N              
+memwb_ir[0]                  : 21        : input  : 3.3-V LVTTL       :         : 1         : N              
 GND*                         : 22        :        :                   :         : 1         :                
-memwb_ir[4]                  : 23        : input  : 3.3-V LVTTL       :         : 1         : N              
-idrr_ir[6]                   : 24        : input  : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 23        :        :                   :         : 1         :                
+GND*                         : 24        :        :                   :         : 1         :                
 VCCIO1                       : 25        : power  :                   : 3.3V    : 1         :                
 GNDIO                        : 26        : gnd    :                   :         :           :                
 GND*                         : 27        :        :                   :         : 1         :                
 GND*                         : 28        :        :                   :         : 1         :                
 GND*                         : 29        :        :                   :         : 1         :                
 GND*                         : 30        :        :                   :         : 1         :                
-idrr_ir[2]                   : 31        : input  : 3.3-V LVTTL       :         : 1         : N              
-memwb_ir[0]                  : 32        : input  : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 31        :        :                   :         : 1         :                
+GND*                         : 32        :        :                   :         : 1         :                
 TMS                          : 33        : input  :                   :         : 1         :                
 TDI                          : 34        : input  :                   :         : 1         :                
 TCK                          : 35        : input  :                   :         : 1         :                
 TDO                          : 36        : output :                   :         : 1         :                
-memwb_ir[8]                  : 37        : input  : 3.3-V LVTTL       :         : 4         : N              
-fwd_mux2[1]                  : 38        : output : 3.3-V LVTTL       :         : 4         : N              
-memwb_ir[12]                 : 39        : input  : 3.3-V LVTTL       :         : 4         : N              
-exmem_ir[4]                  : 40        : input  : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : 37        :        :                   :         : 4         :                
+rrex_ir[2]                   : 38        : input  : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : 39        :        :                   :         : 4         :                
+fwd_mux2[0]                  : 40        : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : 41        :        :                   :         : 4         :                
-rrex_ir[5]                   : 42        : input  : 3.3-V LVTTL       :         : 4         : N              
-exmem_ir[3]                  : 43        : input  : 3.3-V LVTTL       :         : 4         : N              
-idrr_ir[9]                   : 44        : input  : 3.3-V LVTTL       :         : 4         : N              
+fwd_mux2[1]                  : 42        : output : 3.3-V LVTTL       :         : 4         : N              
+wbdone_ir[11]                : 43        : input  : 3.3-V LVTTL       :         : 4         : N              
+fwd_mux2[2]                  : 44        : output : 3.3-V LVTTL       :         : 4         : N              
 memwb_ir[15]                 : 45        : input  : 3.3-V LVTTL       :         : 4         : N              
 VCCIO4                       : 46        : power  :                   : 3.3V    : 4         :                
 GNDIO                        : 47        : gnd    :                   :         :           :                
-memwb_ir[13]                 : 48        : input  : 3.3-V LVTTL       :         : 4         : N              
-memwb_ir[14]                 : 49        : input  : 3.3-V LVTTL       :         : 4         : N              
-memwb_ir[5]                  : 50        : input  : 3.3-V LVTTL       :         : 4         : N              
-idrr_ir[8]                   : 51        : input  : 3.3-V LVTTL       :         : 4         : N              
-exmem_ir[5]                  : 52        : input  : 3.3-V LVTTL       :         : 4         : N              
-rrex_ir[3]                   : 53        : input  : 3.3-V LVTTL       :         : 4         : N              
+wbdone_ir[8]                 : 48        : input  : 3.3-V LVTTL       :         : 4         : N              
+wbdone_ir[12]                : 49        : input  : 3.3-V LVTTL       :         : 4         : N              
+wbdone_ir[14]                : 50        : input  : 3.3-V LVTTL       :         : 4         : N              
+memwb_ir[8]                  : 51        : input  : 3.3-V LVTTL       :         : 4         : N              
+memwb_ir[3]                  : 52        : input  : 3.3-V LVTTL       :         : 4         : N              
+memwb_ir[13]                 : 53        : input  : 3.3-V LVTTL       :         : 4         : N              
 GNDINT                       : 54        : gnd    :                   :         :           :                
-exmem_ir[14]                 : 55        : input  : 3.3-V LVTTL       :         : 4         : N              
+wbdone_ir[15]                : 55        : input  : 3.3-V LVTTL       :         : 4         : N              
 VCCINT                       : 56        : power  :                   : 1.8V    :           :                
-idrr_ir[11]                  : 57        : input  : 3.3-V LVTTL       :         : 4         : N              
-exmem_ir[13]                 : 58        : input  : 3.3-V LVTTL       :         : 4         : N              
-fwd_mux1[0]                  : 59        : output : 3.3-V LVTTL       :         : 4         : N              
-exmem_ir[15]                 : 60        : input  : 3.3-V LVTTL       :         : 4         : N              
-idrr_ir[12]                  : 61        : input  : 3.3-V LVTTL       :         : 4         : N              
-rrex_ir[15]                  : 62        : input  : 3.3-V LVTTL       :         : 4         : N              
-idrr_ir[13]                  : 63        : input  : 3.3-V LVTTL       :         : 4         : N              
+wbdone_ir[5]                 : 57        : input  : 3.3-V LVTTL       :         : 4         : N              
+memwb_ir[12]                 : 58        : input  : 3.3-V LVTTL       :         : 4         : N              
+wbdone_ir[13]                : 59        : input  : 3.3-V LVTTL       :         : 4         : N              
+memwb_ir[5]                  : 60        : input  : 3.3-V LVTTL       :         : 4         : N              
+exmem_ir[14]                 : 61        : input  : 3.3-V LVTTL       :         : 4         : N              
+memwb_ir[11]                 : 62        : input  : 3.3-V LVTTL       :         : 4         : N              
+exmem_ir[5]                  : 63        : input  : 3.3-V LVTTL       :         : 4         : N              
 VCCIO4                       : 64        : power  :                   : 3.3V    : 4         :                
 GNDIO                        : 65        : gnd    :                   :         :           :                
-idrr_ir[14]                  : 66        : input  : 3.3-V LVTTL       :         : 4         : N              
-memwb_ir[3]                  : 67        : input  : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : 68        :        :                   :         : 4         :                
+exmem_ir[11]                 : 66        : input  : 3.3-V LVTTL       :         : 4         : N              
+wbdone_addr[2]               : 67        : input  : 3.3-V LVTTL       :         : 4         : N              
+exmem_ir[15]                 : 68        : input  : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : 69        :        :                   :         : 4         :                
-memwb_ir[11]                 : 70        : input  : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : 71        :        :                   :         : 4         :                
-memwb_ir[1]                  : 72        : input  : 3.3-V LVTTL       :         : 4         : N              
-idrr_ir[5]                   : 73        : input  : 3.3-V LVTTL       :         : 3         : N              
+wbdone_ir[1]                 : 70        : input  : 3.3-V LVTTL       :         : 4         : N              
+memwb_ir[1]                  : 71        : input  : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : 72        :        :                   :         : 4         :                
+exmem_ir[2]                  : 73        : input  : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : 74        :        :                   :         : 3         :                
-exmem_ir[2]                  : 75        : input  : 3.3-V LVTTL       :         : 3         : N              
-rrex_ir[9]                   : 76        : input  : 3.3-V LVTTL       :         : 3         : N              
-rrex_ir[0]                   : 77        : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : 75        :        :                   :         : 3         :                
+GND*                         : 76        :        :                   :         : 3         :                
+GND*                         : 77        :        :                   :         : 3         :                
 GNDIO                        : 78        : gnd    :                   :         :           :                
-memwb_ir[10]                 : 79        : input  : 3.3-V LVTTL       :         : 3         : N              
-GND*                         : 80        :        :                   :         : 3         :                
-idrr_ir[0]                   : 81        : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : 79        :        :                   :         : 3         :                
+rrex_ir[5]                   : 80        : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : 81        :        :                   :         : 3         :                
 VCCIO3                       : 82        : power  :                   : 3.3V    : 3         :                
 GNDIO                        : 83        : gnd    :                   :         :           :                
-GND*                         : 84        :        :                   :         : 3         :                
-GND*                         : 85        :        :                   :         : 3         :                
-GND*                         : 86        :        :                   :         : 3         :                
-exmem_ir[11]                 : 87        : input  : 3.3-V LVTTL       :         : 3         : N              
-exmem_ir[9]                  : 88        : input  : 3.3-V LVTTL       :         : 3         : N              
-rrex_ir[8]                   : 89        : input  : 3.3-V LVTTL       :         : 3         : N              
+fwd_mux1[0]                  : 84        : output : 3.3-V LVTTL       :         : 3         : N              
+exmem_addr[0]                : 85        : input  : 3.3-V LVTTL       :         : 3         : N              
+exmem_ir[8]                  : 86        : input  : 3.3-V LVTTL       :         : 3         : N              
+wbdone_ir[9]                 : 87        : input  : 3.3-V LVTTL       :         : 3         : N              
+exmem_ir[13]                 : 88        : input  : 3.3-V LVTTL       :         : 3         : N              
+wbdone_ir[4]                 : 89        : input  : 3.3-V LVTTL       :         : 3         : N              
 VCCINT                       : 90        : power  :                   : 1.8V    :           :                
-rrex_ir[2]                   : 91        : input  : 3.3-V LVTTL       :         : 3         : N              
+exmem_ir[12]                 : 91        : input  : 3.3-V LVTTL       :         : 3         : N              
 GNDINT                       : 92        : gnd    :                   :         :           :                
-idrr_ir[1]                   : 93        : input  : 3.3-V LVTTL       :         : 3         : N              
-GND*                         : 94        :        :                   :         : 3         :                
-GND*                         : 95        :        :                   :         : 3         :                
-GND*                         : 96        :        :                   :         : 3         :                
-GND*                         : 97        :        :                   :         : 3         :                
-GND*                         : 98        :        :                   :         : 3         :                
+wbdone_ir[3]                 : 93        : input  : 3.3-V LVTTL       :         : 3         : N              
+fwd_mux1[1]                  : 94        : output : 3.3-V LVTTL       :         : 3         : N              
+rrex_ir[9]                   : 95        : input  : 3.3-V LVTTL       :         : 3         : N              
+fwd_mux1[2]                  : 96        : output : 3.3-V LVTTL       :         : 3         : N              
+exmem_ir[10]                 : 97        : input  : 3.3-V LVTTL       :         : 3         : N              
+exmem_addr[1]                : 98        : input  : 3.3-V LVTTL       :         : 3         : N              
 GNDIO                        : 99        : gnd    :                   :         :           :                
 VCCIO3                       : 100       : power  :                   : 3.3V    : 3         :                
-GND*                         : 101       :        :                   :         : 3         :                
-GND*                         : 102       :        :                   :         : 3         :                
-GND*                         : 103       :        :                   :         : 3         :                
-rrex_ir[11]                  : 104       : input  : 3.3-V LVTTL       :         : 3         : N              
-GND*                         : 105       :        :                   :         : 3         :                
+exmem_ir[7]                  : 101       : input  : 3.3-V LVTTL       :         : 3         : N              
+memwb_ir[4]                  : 102       : input  : 3.3-V LVTTL       :         : 3         : N              
+exmem_ir[4]                  : 103       : input  : 3.3-V LVTTL       :         : 3         : N              
+wbdone_ir[10]                : 104       : input  : 3.3-V LVTTL       :         : 3         : N              
+rrex_ir[14]                  : 105       : input  : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : 106       :        :                   :         : 3         :                
-idrr_ir[4]                   : 107       : input  : 3.3-V LVTTL       :         : 3         : N              
-GND*                         : 108       :        :                   :         : 3         :                
+GND*                         : 107       :        :                   :         : 3         :                
+rrex_ir[6]                   : 108       : input  : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : 109       :        :                   :         : 2         :                
-memwb_ir[9]                  : 110       : input  : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : 111       :        :                   :         : 2         :                
-memwb_ir[7]                  : 112       : input  : 3.3-V LVTTL       :         : 2         : N              
-idrr_ir[3]                   : 113       : input  : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : 114       :        :                   :         : 2         :                
+GND*                         : 110       :        :                   :         : 2         :                
+exmem_ir[6]                  : 111       : input  : 3.3-V LVTTL       :         : 2         : N              
+memwb_addr[2]                : 112       : input  : 3.3-V LVTTL       :         : 2         : N              
+rrex_ir[10]                  : 113       : input  : 3.3-V LVTTL       :         : 2         : N              
+rrex_ir[7]                   : 114       : input  : 3.3-V LVTTL       :         : 2         : N              
 GNDIO                        : 115       : gnd    :                   :         :           :                
 VCCIO2                       : 116       : power  :                   : 3.3V    : 2         :                
-exmem_ir[10]                 : 117       : input  : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : 118       :        :                   :         : 2         :                
-GND*                         : 119       :        :                   :         : 2         :                
-idrr_ir[15]                  : 120       : input  : 3.3-V LVTTL       :         : 2         : N              
-rrex_ir[12]                  : 121       : input  : 3.3-V LVTTL       :         : 2         : N              
-rrex_ir[13]                  : 122       : input  : 3.3-V LVTTL       :         : 2         : N              
-exmem_ir[7]                  : 123       : input  : 3.3-V LVTTL       :         : 2         : N              
-fwd_mux1[1]                  : 124       : output : 3.3-V LVTTL       :         : 2         : N              
-rrex_ir[14]                  : 125       : input  : 3.3-V LVTTL       :         : 2         : N              
+exmem_ir[3]                  : 117       : input  : 3.3-V LVTTL       :         : 2         : N              
+memwb_ir[6]                  : 118       : input  : 3.3-V LVTTL       :         : 2         : N              
+memwb_ir[7]                  : 119       : input  : 3.3-V LVTTL       :         : 2         : N              
+wbdone_addr[1]               : 120       : input  : 3.3-V LVTTL       :         : 2         : N              
+rrex_ir[8]                   : 121       : input  : 3.3-V LVTTL       :         : 2         : N              
+rrex_ir[11]                  : 122       : input  : 3.3-V LVTTL       :         : 2         : N              
+memwb_addr[1]                : 123       : input  : 3.3-V LVTTL       :         : 2         : N              
+rrex_ir[13]                  : 124       : input  : 3.3-V LVTTL       :         : 2         : N              
+wbdone_addr[0]               : 125       : input  : 3.3-V LVTTL       :         : 2         : N              
 VCCINT                       : 126       : power  :                   : 1.8V    :           :                
-exmem_ir[12]                 : 127       : input  : 3.3-V LVTTL       :         : 2         : N              
+wbdone_ir[7]                 : 127       : input  : 3.3-V LVTTL       :         : 2         : N              
 GNDINT                       : 128       : gnd    :                   :         :           :                
-idrr_ir[10]                  : 129       : input  : 3.3-V LVTTL       :         : 2         : N              
-rrex_ir[4]                   : 130       : input  : 3.3-V LVTTL       :         : 2         : N              
-idrr_ir[7]                   : 131       : input  : 3.3-V LVTTL       :         : 2         : N              
-fwd_mux2[0]                  : 132       : output : 3.3-V LVTTL       :         : 2         : N              
-rrex_ir[1]                   : 133       : input  : 3.3-V LVTTL       :         : 2         : N              
-exmem_ir[6]                  : 134       : input  : 3.3-V LVTTL       :         : 2         : N              
+rrex_ir[12]                  : 129       : input  : 3.3-V LVTTL       :         : 2         : N              
+memwb_ir[10]                 : 130       : input  : 3.3-V LVTTL       :         : 2         : N              
+wbdone_ir[6]                 : 131       : input  : 3.3-V LVTTL       :         : 2         : N              
+memwb_addr[0]                : 132       : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 133       :        :                   :         : 2         :                
+rrex_ir[15]                  : 134       : input  : 3.3-V LVTTL       :         : 2         : N              
 GNDIO                        : 135       : gnd    :                   :         :           :                
 VCCIO2                       : 136       : power  :                   : 3.3V    : 2         :                
-memwb_ir[2]                  : 137       : input  : 3.3-V LVTTL       :         : 2         : N              
+memwb_ir[14]                 : 137       : input  : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 138       :        :                   :         : 2         :                
-GND*                         : 139       :        :                   :         : 2         :                
-rrex_ir[6]                   : 140       : input  : 3.3-V LVTTL       :         : 2         : N              
-memwb_ir[6]                  : 141       : input  : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : 142       :        :                   :         : 2         :                
-GND*                         : 143       :        :                   :         : 2         :                
+exmem_ir[9]                  : 139       : input  : 3.3-V LVTTL       :         : 2         : N              
+exmem_addr[2]                : 140       : input  : 3.3-V LVTTL       :         : 2         : N              
+wbdone_ir[2]                 : 141       : input  : 3.3-V LVTTL       :         : 2         : N              
+rrex_ir[1]                   : 142       : input  : 3.3-V LVTTL       :         : 2         : N              
+exmem_ir[0]                  : 143       : input  : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 144       :        :                   :         : 2         :                

@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for iitb-risc
-Thu Oct 31 21:18:24 2019
+Sat Nov  2 21:23:51 2019
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -140,50 +140,77 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 31    ; 31   ;
-; Unconstrained Input Port Paths  ; 112   ; 112  ;
-; Unconstrained Output Ports      ; 4     ; 4    ;
-; Unconstrained Output Port Paths ; 112   ; 112  ;
+; Unconstrained Input Ports       ; 58    ; 58   ;
+; Unconstrained Input Port Paths  ; 318   ; 318  ;
+; Unconstrained Output Ports      ; 6     ; 6    ;
+; Unconstrained Output Port Paths ; 318   ; 318  ;
 +---------------------------------+-------+------+
 
 
-+-----------------------------------------------------------------------------------------------------+
-; Unconstrained Input Ports                                                                           ;
-+--------------+--------------------------------------------------------------------------------------+
-; Input Port   ; Comment                                                                              ;
-+--------------+--------------------------------------------------------------------------------------+
-; exmem_ir[3]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; exmem_ir[4]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; exmem_ir[5]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; exmem_ir[12] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; exmem_ir[13] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; exmem_ir[14] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; exmem_ir[15] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[6]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[7]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[8]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[9]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[10]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[11]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[12]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[13]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[14]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[15]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[3]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[4]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[5]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[12] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[13] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[14] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[15] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[3]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[4]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[5]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[12]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[13]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[14]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[15]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+--------------+--------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                             ;
++----------------+--------------------------------------------------------------------------------------+
+; Input Port     ; Comment                                                                              ;
++----------------+--------------------------------------------------------------------------------------+
+; exmem_addr[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_addr[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_addr[2]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[3]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[4]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[5]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[6]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[7]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[8]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[9]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[10]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[11]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[12]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[13]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[14]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[15]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_addr[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_addr[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_addr[2]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[3]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[4]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[5]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[6]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[7]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[8]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[9]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[10]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[11]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[12]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[13]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[14]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[15]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[6]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[7]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[8]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[9]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[10]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[11]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[12]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[13]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[14]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[15]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_addr[0] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_addr[1] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_addr[2] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[3]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[4]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[5]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[6]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[7]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[8]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[9]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[10]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[11]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[12]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[13]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[14]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[15]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++----------------+--------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------+
@@ -193,48 +220,77 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +-------------+---------------------------------------------------------------------------------------+
 ; fwd_mux1[0] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; fwd_mux1[1] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; fwd_mux1[2] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; fwd_mux2[0] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; fwd_mux2[1] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; fwd_mux2[2] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +-------------+---------------------------------------------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------+
-; Unconstrained Input Ports                                                                           ;
-+--------------+--------------------------------------------------------------------------------------+
-; Input Port   ; Comment                                                                              ;
-+--------------+--------------------------------------------------------------------------------------+
-; exmem_ir[3]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; exmem_ir[4]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; exmem_ir[5]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; exmem_ir[12] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; exmem_ir[13] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; exmem_ir[14] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; exmem_ir[15] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[6]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[7]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[8]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[9]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[10]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[11]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[12]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[13]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[14]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; idrr_ir[15]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[3]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[4]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[5]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[12] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[13] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[14] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; memwb_ir[15] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[3]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[4]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[5]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[12]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[13]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[14]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rrex_ir[15]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+--------------+--------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                             ;
++----------------+--------------------------------------------------------------------------------------+
+; Input Port     ; Comment                                                                              ;
++----------------+--------------------------------------------------------------------------------------+
+; exmem_addr[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_addr[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_addr[2]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[3]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[4]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[5]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[6]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[7]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[8]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[9]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[10]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[11]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[12]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[13]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[14]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; exmem_ir[15]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_addr[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_addr[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_addr[2]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[3]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[4]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[5]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[6]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[7]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[8]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[9]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[10]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[11]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[12]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[13]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[14]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; memwb_ir[15]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[6]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[7]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[8]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[9]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[10]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[11]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[12]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[13]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[14]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rrex_ir[15]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_addr[0] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_addr[1] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_addr[2] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[3]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[4]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[5]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[6]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[7]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[8]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[9]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[10]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[11]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[12]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[13]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[14]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; wbdone_ir[15]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++----------------+--------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------+
@@ -244,8 +300,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +-------------+---------------------------------------------------------------------------------------+
 ; fwd_mux1[0] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; fwd_mux1[1] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; fwd_mux1[2] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; fwd_mux2[0] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; fwd_mux2[1] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; fwd_mux2[2] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +-------------+---------------------------------------------------------------------------------------+
 
 
@@ -255,7 +313,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-    Info: Processing started: Thu Oct 31 21:18:23 2019
+    Info: Processing started: Sat Nov  2 21:23:50 2019
 Info: Command: quartus_sta ee309_project1 -c iitb-risc
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
@@ -281,7 +339,7 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 3 warnings
     Info: Peak virtual memory: 1006 megabytes
-    Info: Processing ended: Thu Oct 31 21:18:24 2019
+    Info: Processing ended: Sat Nov  2 21:23:51 2019
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

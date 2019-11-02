@@ -1,5 +1,5 @@
 Analysis & Synthesis report for iitb-risc
-Sat Nov  2 21:24:21 2019
+Sun Nov  3 02:31:20 2019
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -13,9 +13,30 @@ Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Multiplexer Restructuring Statistics (Restructuring Performed)
- 10. Analysis & Synthesis Messages
+  8. State Machine - |IITB_proc|fsm_rr:fsm_rr_ins|fsm_state_symbol
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Port Connectivity Checks: "Mux16_8_1:fwd_mux2_block"
+ 14. Port Connectivity Checks: "Mux16_8_1:fwd_mux1_block"
+ 15. Port Connectivity Checks: "Register16:wbdone_addr"
+ 16. Port Connectivity Checks: "Mux16_2_1:mem_acess_m"
+ 17. Port Connectivity Checks: "Mux16_4_1:memm1"
+ 18. Port Connectivity Checks: "Mux16_8_1:exm7"
+ 19. Port Connectivity Checks: "Mux16_4_1:exm6"
+ 20. Port Connectivity Checks: "adder16:alu3"
+ 21. Port Connectivity Checks: "Mux16_2_1:exm4"
+ 22. Port Connectivity Checks: "Mux16_4_1:exm2"
+ 23. Port Connectivity Checks: "Mux16_4_1:exm1"
+ 24. Port Connectivity Checks: "Register8:rrt1"
+ 25. Port Connectivity Checks: "Mux16_8_1:rrm4"
+ 26. Port Connectivity Checks: "Mux16_4_1:rrm2"
+ 27. Port Connectivity Checks: "Mux16_4_1:idm1"
+ 28. Port Connectivity Checks: "MemCode:memc"
+ 29. Port Connectivity Checks: "adder16:alu1|Full_Adder:\add:0:ax"
+ 30. Port Connectivity Checks: "adder16:alu1"
+ 31. Analysis & Synthesis Messages
 
 
 
@@ -42,13 +63,13 @@ agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sat Nov  2 21:24:21 2019       ;
+; Analysis & Synthesis Status ; Successful - Sun Nov  3 02:31:20 2019       ;
 ; Quartus Prime Version       ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name               ; iitb-risc                                   ;
-; Top-level Entity Name       ; forwarding_logic                            ;
+; Top-level Entity Name       ; IITB_proc                                   ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 88                                          ;
-; Total pins                  ; 79                                          ;
+; Total logic elements        ; 5,189                                       ;
+; Total pins                  ; 18                                          ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -60,7 +81,7 @@ agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; 5M1270ZT144C5      ;                    ;
-; Top-level entity name                                                      ; forwarding_logic   ; iitb-risc          ;
+; Top-level entity name                                                      ; IITB_proc          ; iitb-risc          ;
 ; Family name                                                                ; MAX V              ; Cyclone V          ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -137,57 +158,430 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                    ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                             ; Library ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------+---------+
-; forwarding_logic.vhdl            ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl ;         ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                             ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                      ; Library ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------+---------+
+; Mux1_2_1.vhdl                    ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux1_2_1.vhdl                  ;         ;
+; Memory_asyncread_syncwrite.vhd   ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Memory_asyncread_syncwrite.vhd ;         ;
+; MemCode.vhdl                     ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/MemCode.vhdl                   ;         ;
+; IITB_proc.vhdl                   ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl                 ;         ;
+; Gates.vhdl                       ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl                     ;         ;
+; fsm_wb.vhdl                      ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_wb.vhdl                    ;         ;
+; fsm_rr.vhdl                      ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_rr.vhdl                    ;         ;
+; fsm_mem.vhdl                     ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_mem.vhdl                   ;         ;
+; fsm_if.vhdl                      ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_if.vhdl                    ;         ;
+; Register_file.vhdl               ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register_file.vhdl             ;         ;
+; Register16.vhdl                  ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register16.vhdl                ;         ;
+; Register8.vhdl                   ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register8.vhdl                 ;         ;
+; Register1.vhdl                   ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register1.vhdl                 ;         ;
+; pri_enc.vhdl                     ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/pri_enc.vhdl                   ;         ;
+; nandbit.vhdl                     ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/nandbit.vhdl                   ;         ;
+; Mux16_8_1.vhdl                   ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux16_8_1.vhdl                 ;         ;
+; Mux16_4_1.vhdl                   ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux16_4_1.vhdl                 ;         ;
+; Mux16_2_1.vhdl                   ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux16_2_1.vhdl                 ;         ;
+; Mux8_2_1.vhdl                    ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux8_2_1.vhdl                  ;         ;
+; Mux3_2_1.vhdl                    ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux3_2_1.vhdl                  ;         ;
+; Mux1_8_1.vhdl                    ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux1_8_1.vhdl                  ;         ;
+; Mux1_4_1.vhdl                    ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux1_4_1.vhdl                  ;         ;
+; fsm_id.vhdl                      ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_id.vhdl                    ;         ;
+; fsm_ex.vhdl                      ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_ex.vhdl                    ;         ;
+; bin_enc.vhdl                     ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/bin_enc.vhdl                   ;         ;
+; alu.vhdl                         ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/alu.vhdl                       ;         ;
+; adder16.vhdl                     ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/adder16.vhdl                   ;         ;
+; forwarding_logic.vhdl            ; yes             ; User VHDL File  ; /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl          ;         ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------+---------+
 
 
-+----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary              ;
-+---------------------------------------------+------------+
-; Resource                                    ; Usage      ;
-+---------------------------------------------+------------+
-; Total logic elements                        ; 88         ;
-;     -- Combinational with no register       ; 88         ;
-;     -- Register only                        ; 0          ;
-;     -- Combinational with a register        ; 0          ;
-;                                             ;            ;
-; Logic element usage by number of LUT inputs ;            ;
-;     -- 4 input functions                    ; 73         ;
-;     -- 3 input functions                    ; 8          ;
-;     -- 2 input functions                    ; 7          ;
-;     -- 1 input functions                    ; 0          ;
-;     -- 0 input functions                    ; 0          ;
-;                                             ;            ;
-; Logic elements by mode                      ;            ;
-;     -- normal mode                          ; 88         ;
-;     -- arithmetic mode                      ; 0          ;
-;     -- qfbk mode                            ; 0          ;
-;     -- register cascade mode                ; 0          ;
-;     -- synchronous clear/load mode          ; 0          ;
-;     -- asynchronous clear/load mode         ; 0          ;
-;                                             ;            ;
-; Total registers                             ; 0          ;
-; I/O pins                                    ; 79         ;
-; Maximum fan-out node                        ; rrex_ir[9] ;
-; Maximum fan-out                             ; 12         ;
-; Total fan-out                               ; 336        ;
-; Average fan-out                             ; 2.01       ;
-+---------------------------------------------+------------+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 5189  ;
+;     -- Combinational with no register       ; 2423  ;
+;     -- Register only                        ; 2601  ;
+;     -- Combinational with a register        ; 165   ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 2211  ;
+;     -- 3 input functions                    ; 300   ;
+;     -- 2 input functions                    ; 50    ;
+;     -- 1 input functions                    ; 27    ;
+;     -- 0 input functions                    ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 5189  ;
+;     -- arithmetic mode                      ; 0     ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 35    ;
+;     -- asynchronous clear/load mode         ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 2766  ;
+; I/O pins                                    ; 18    ;
+; Maximum fan-out node                        ; clock ;
+; Maximum fan-out                             ; 2766  ;
+; Total fan-out                               ; 18043 ;
+; Average fan-out                             ; 3.47  ;
++---------------------------------------------+-------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                     ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+------------------+--------------+
-; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name      ; Library Name ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+------------------+--------------+
-; |forwarding_logic          ; 88 (88)     ; 0            ; 0          ; 79   ; 0            ; 88 (88)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |forwarding_logic   ; forwarding_logic ; work         ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                    ;
++----------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------------------+----------------------------+--------------+
+; Compilation Hierarchy Node             ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                          ; Entity Name                ; Library Name ;
++----------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------------------+----------------------------+--------------+
+; |IITB_proc                             ; 5189 (23)   ; 2766         ; 0          ; 18   ; 0            ; 2423 (23)    ; 2601 (0)          ; 165 (0)          ; 0 (0)           ; 0 (0)      ; |IITB_proc                                                   ; IITB_proc                  ; work         ;
+;    |MemCode:memc|                      ; 15 (15)     ; 0            ; 0          ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|MemCode:memc                                      ; MemCode                    ; work         ;
+;    |Memory_asyncread_syncwrite:memd|   ; 3910 (3910) ; 2256         ; 0          ; 0    ; 0            ; 1654 (1654)  ; 2243 (2243)       ; 13 (13)          ; 0 (0)           ; 0 (0)      ; |IITB_proc|Memory_asyncread_syncwrite:memd                   ; Memory_asyncread_syncwrite ; work         ;
+;    |Mux16_2_1:exm3|                    ; 16 (0)      ; 0            ; 0          ; 0    ; 0            ; 16 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3                                    ; Mux16_2_1                  ; work         ;
+;       |Mux1_2_1:\muxg:0:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:0:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:10:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:10:mx               ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:11:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:11:mx               ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:12:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:12:mx               ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:13:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:13:mx               ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:14:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:14:mx               ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:15:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:15:mx               ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:1:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:1:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:2:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:2:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:3:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:3:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:4:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:4:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:5:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:5:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:6:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:6:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:7:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:7:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:8:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:8:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:9:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm3|Mux1_2_1:\muxg:9:mx                ; Mux1_2_1                   ; work         ;
+;    |Mux16_2_1:exm4|                    ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm4                                    ; Mux16_2_1                  ; work         ;
+;       |Mux1_2_1:\muxg:0:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm4|Mux1_2_1:\muxg:0:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:1:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:exm4|Mux1_2_1:\muxg:1:mx                ; Mux1_2_1                   ; work         ;
+;    |Mux16_2_1:mem_acess_m|             ; 8 (0)       ; 0            ; 0          ; 0    ; 0            ; 8 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:mem_acess_m                             ; Mux16_2_1                  ; work         ;
+;       |Mux1_2_1:\muxg:0:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:mem_acess_m|Mux1_2_1:\muxg:0:mx         ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:1:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:mem_acess_m|Mux1_2_1:\muxg:1:mx         ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:2:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:mem_acess_m|Mux1_2_1:\muxg:2:mx         ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:3:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:mem_acess_m|Mux1_2_1:\muxg:3:mx         ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:4:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:mem_acess_m|Mux1_2_1:\muxg:4:mx         ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:5:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:mem_acess_m|Mux1_2_1:\muxg:5:mx         ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:6:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:mem_acess_m|Mux1_2_1:\muxg:6:mx         ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:7:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:mem_acess_m|Mux1_2_1:\muxg:7:mx         ; Mux1_2_1                   ; work         ;
+;    |Mux16_2_1:rrm3|                    ; 64 (0)      ; 0            ; 0          ; 0    ; 0            ; 64 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3                                    ; Mux16_2_1                  ; work         ;
+;       |Mux1_2_1:\muxg:0:mx|            ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:0:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:10:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:10:mx               ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:11:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:11:mx               ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:12:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:12:mx               ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:13:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:13:mx               ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:14:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:14:mx               ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:15:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:15:mx               ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:1:mx|            ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:1:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:2:mx|            ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:2:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:3:mx|            ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:3:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:4:mx|            ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:4:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:5:mx|            ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:5:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:6:mx|            ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:6:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:7:mx|            ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:7:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:8:mx|            ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:8:mx                ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:9:mx|            ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_2_1:rrm3|Mux1_2_1:\muxg:9:mx                ; Mux1_2_1                   ; work         ;
+;    |Mux16_4_1:exm6|                    ; 16 (0)      ; 0            ; 0          ; 0    ; 0            ; 16 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6                                    ; Mux16_4_1                  ; work         ;
+;       |Mux1_4_1:\muxg4:0:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:0:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:10:mx|          ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:10:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:11:mx|          ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:11:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:12:mx|          ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:12:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:13:mx|          ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:13:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:14:mx|          ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:14:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:15:mx|          ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:15:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:1:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:1:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:2:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:2:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:3:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:3:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:4:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:4:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:5:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:5:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:6:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:6:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:7:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:7:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:8:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:8:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:9:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:exm6|Mux1_4_1:\muxg4:9:mx               ; Mux1_4_1                   ; work         ;
+;    |Mux16_4_1:idm1|                    ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:idm1                                    ; Mux16_4_1                  ; work         ;
+;       |Mux1_4_1:\muxg4:5:mx|           ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:idm1|Mux1_4_1:\muxg4:5:mx               ; Mux1_4_1                   ; work         ;
+;    |Mux16_4_1:memm1|                   ; 66 (0)      ; 0            ; 0          ; 0    ; 0            ; 66 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1                                   ; Mux16_4_1                  ; work         ;
+;       |Mux1_4_1:\muxg4:0:mx|           ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:0:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:10:mx|          ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:10:mx             ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:11:mx|          ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:11:mx             ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:12:mx|          ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:12:mx             ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:13:mx|          ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:13:mx             ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:14:mx|          ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:14:mx             ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:15:mx|          ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:15:mx             ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:1:mx|           ; 3 (3)       ; 0            ; 0          ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:1:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:2:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:2:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:3:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:3:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:4:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:4:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:5:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:5:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:6:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:6:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:7:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:7:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:8:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:8:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:9:mx|           ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:memm1|Mux1_4_1:\muxg4:9:mx              ; Mux1_4_1                   ; work         ;
+;    |Mux16_4_1:rrm2|                    ; 80 (0)      ; 0            ; 0          ; 0    ; 0            ; 80 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2                                    ; Mux16_4_1                  ; work         ;
+;       |Mux1_4_1:\muxg4:0:mx|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:0:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:10:mx|          ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:10:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:11:mx|          ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:11:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:12:mx|          ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:12:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:13:mx|          ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:13:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:14:mx|          ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:14:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:15:mx|          ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:15:mx              ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:1:mx|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:1:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:2:mx|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:2:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:3:mx|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:3:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:4:mx|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:4:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:5:mx|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:5:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:6:mx|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:6:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:7:mx|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:7:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:8:mx|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:8:mx               ; Mux1_4_1                   ; work         ;
+;       |Mux1_4_1:\muxg4:9:mx|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:9:mx               ; Mux1_4_1                   ; work         ;
+;    |Mux16_8_1:exm7|                    ; 33 (0)      ; 0            ; 0          ; 0    ; 0            ; 33 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7                                    ; Mux16_8_1                  ; work         ;
+;       |Mux1_8_1:\muxg4:0:mx|           ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:0:mx               ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:10:mx|          ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:10:mx              ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:11:mx|          ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:11:mx              ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:12:mx|          ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:12:mx              ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:13:mx|          ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:13:mx              ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:14:mx|          ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:14:mx              ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:15:mx|          ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:15:mx              ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:1:mx|           ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:1:mx               ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:2:mx|           ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:2:mx               ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:3:mx|           ; 3 (3)       ; 0            ; 0          ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:3:mx               ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:4:mx|           ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:4:mx               ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:5:mx|           ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:5:mx               ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:6:mx|           ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:6:mx               ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:7:mx|           ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:7:mx               ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:8:mx|           ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:8:mx               ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:9:mx|           ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:exm7|Mux1_8_1:\muxg4:9:mx               ; Mux1_8_1                   ; work         ;
+;    |Mux16_8_1:fwd_mux1_block|          ; 101 (0)     ; 0            ; 0          ; 0    ; 0            ; 101 (0)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block                          ; Mux16_8_1                  ; work         ;
+;       |Mux1_8_1:\muxg4:0:mx|           ; 8 (8)       ; 0            ; 0          ; 0    ; 0            ; 8 (8)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:0:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:10:mx|          ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:10:mx    ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:11:mx|          ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:11:mx    ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:12:mx|          ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:12:mx    ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:13:mx|          ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:13:mx    ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:14:mx|          ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:14:mx    ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:15:mx|          ; 11 (11)     ; 0            ; 0          ; 0    ; 0            ; 11 (11)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:15:mx    ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:1:mx|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:1:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:2:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:2:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:3:mx|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:3:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:4:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:4:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:5:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:5:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:6:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:6:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:7:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:7:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:8:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:8:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:9:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux1_block|Mux1_8_1:\muxg4:9:mx     ; Mux1_8_1                   ; work         ;
+;    |Mux16_8_1:fwd_mux2_block|          ; 96 (0)      ; 0            ; 0          ; 0    ; 0            ; 96 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block                          ; Mux16_8_1                  ; work         ;
+;       |Mux1_8_1:\muxg4:0:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:0:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:10:mx|          ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:10:mx    ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:11:mx|          ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:11:mx    ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:12:mx|          ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:12:mx    ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:13:mx|          ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:13:mx    ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:14:mx|          ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:14:mx    ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:15:mx|          ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:15:mx    ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:1:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:1:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:2:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:2:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:3:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:3:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:4:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:4:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:5:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:5:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:6:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:6:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:7:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:7:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:8:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:8:mx     ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:9:mx|           ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:fwd_mux2_block|Mux1_8_1:\muxg4:9:mx     ; Mux1_8_1                   ; work         ;
+;    |Mux16_8_1:rrm4|                    ; 6 (0)       ; 0            ; 0          ; 0    ; 0            ; 6 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:rrm4                                    ; Mux16_8_1                  ; work         ;
+;       |Mux1_8_1:\muxg4:0:mx|           ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:rrm4|Mux1_8_1:\muxg4:0:mx               ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:1:mx|           ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:rrm4|Mux1_8_1:\muxg4:1:mx               ; Mux1_8_1                   ; work         ;
+;       |Mux1_8_1:\muxg4:2:mx|           ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux16_8_1:rrm4|Mux1_8_1:\muxg4:2:mx               ; Mux1_8_1                   ; work         ;
+;    |Mux3_2_1:rrm5|                     ; 3 (0)       ; 0            ; 0          ; 0    ; 0            ; 3 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux3_2_1:rrm5                                     ; Mux3_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:0:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux3_2_1:rrm5|Mux1_2_1:\muxg:0:mx                 ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:1:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux3_2_1:rrm5|Mux1_2_1:\muxg:1:mx                 ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:2:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux3_2_1:rrm5|Mux1_2_1:\muxg:2:mx                 ; Mux1_2_1                   ; work         ;
+;    |Mux8_2_1:rrm6|                     ; 8 (0)       ; 0            ; 0          ; 0    ; 0            ; 8 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux8_2_1:rrm6                                     ; Mux8_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:0:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux8_2_1:rrm6|Mux1_2_1:\muxg:0:mx                 ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:1:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux8_2_1:rrm6|Mux1_2_1:\muxg:1:mx                 ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:2:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux8_2_1:rrm6|Mux1_2_1:\muxg:2:mx                 ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:3:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux8_2_1:rrm6|Mux1_2_1:\muxg:3:mx                 ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:4:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux8_2_1:rrm6|Mux1_2_1:\muxg:4:mx                 ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:5:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux8_2_1:rrm6|Mux1_2_1:\muxg:5:mx                 ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:6:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux8_2_1:rrm6|Mux1_2_1:\muxg:6:mx                 ; Mux1_2_1                   ; work         ;
+;       |Mux1_2_1:\muxg:7:mx|            ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Mux8_2_1:rrm6|Mux1_2_1:\muxg:7:mx                 ; Mux1_2_1                   ; work         ;
+;    |Register16:exmem_addr1|            ; 3 (3)       ; 3            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 3 (3)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:exmem_addr1                            ; Register16                 ; work         ;
+;    |Register16:exmem_addr2|            ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:exmem_addr2                            ; Register16                 ; work         ;
+;    |Register16:exmem_ir|               ; 13 (13)     ; 13           ; 0          ; 0    ; 0            ; 0 (0)        ; 13 (13)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:exmem_ir                               ; Register16                 ; work         ;
+;    |Register16:exmem_pcn|              ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 16 (16)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:exmem_pcn                              ; Register16                 ; work         ;
+;    |Register16:exmem_val|              ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:exmem_val                              ; Register16                 ; work         ;
+;    |Register16:idrr_ir|                ; 15 (15)     ; 15           ; 0          ; 0    ; 0            ; 0 (0)        ; 15 (15)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:idrr_ir                                ; Register16                 ; work         ;
+;    |Register16:idrr_pcn|               ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 16 (16)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:idrr_pcn                               ; Register16                 ; work         ;
+;    |Register16:idrr_pc|                ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 16 (16)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:idrr_pc                                ; Register16                 ; work         ;
+;    |Register16:idrr_sgh69|             ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 15 (15)          ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:idrr_sgh69                             ; Register16                 ; work         ;
+;    |Register16:ifid_ir|                ; 15 (15)     ; 15           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 15 (15)          ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:ifid_ir                                ; Register16                 ; work         ;
+;    |Register16:ifid_pcn|               ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 15 (15)           ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:ifid_pcn                               ; Register16                 ; work         ;
+;    |Register16:ifid_pc|                ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 16 (16)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:ifid_pc                                ; Register16                 ; work         ;
+;    |Register16:memwb_addr|             ; 3 (3)       ; 3            ; 0          ; 0    ; 0            ; 0 (0)        ; 3 (3)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:memwb_addr                             ; Register16                 ; work         ;
+;    |Register16:memwb_ir|               ; 13 (13)     ; 13           ; 0          ; 0    ; 0            ; 0 (0)        ; 13 (13)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:memwb_ir                               ; Register16                 ; work         ;
+;    |Register16:memwb_pcn|              ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 16 (16)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:memwb_pcn                              ; Register16                 ; work         ;
+;    |Register16:memwb_val|              ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 16 (16)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:memwb_val                              ; Register16                 ; work         ;
+;    |Register16:pc|                     ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:pc                                     ; Register16                 ; work         ;
+;    |Register16:rrex_addr|              ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:rrex_addr                              ; Register16                 ; work         ;
+;    |Register16:rrex_d1|                ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:rrex_d1                                ; Register16                 ; work         ;
+;    |Register16:rrex_d2|                ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:rrex_d2                                ; Register16                 ; work         ;
+;    |Register16:rrex_d3|                ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 16 (16)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:rrex_d3                                ; Register16                 ; work         ;
+;    |Register16:rrex_ir|                ; 15 (15)     ; 15           ; 0          ; 0    ; 0            ; 0 (0)        ; 15 (15)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:rrex_ir                                ; Register16                 ; work         ;
+;    |Register16:rrex_pcn|               ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 16 (16)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:rrex_pcn                               ; Register16                 ; work         ;
+;    |Register16:wbdone_addr|            ; 3 (3)       ; 3            ; 0          ; 0    ; 0            ; 0 (0)        ; 3 (3)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:wbdone_addr                            ; Register16                 ; work         ;
+;    |Register16:wbdone_ir|              ; 13 (13)     ; 13           ; 0          ; 0    ; 0            ; 0 (0)        ; 13 (13)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:wbdone_ir                              ; Register16                 ; work         ;
+;    |Register16:wbdone_val|             ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 16 (16)           ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register16:wbdone_val                             ; Register16                 ; work         ;
+;    |Register1:Cflag|                   ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register1:Cflag                                   ; Register1                  ; work         ;
+;    |Register1:Zflag|                   ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register1:Zflag                                   ; Register1                  ; work         ;
+;    |Register8:rrt1|                    ; 7 (7)       ; 7            ; 0          ; 0    ; 0            ; 0 (0)        ; 4 (4)             ; 3 (3)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register8:rrt1                                    ; Register8                  ; work         ;
+;    |Register_file:rf|                  ; 136 (136)   ; 128          ; 0          ; 0    ; 0            ; 8 (8)        ; 119 (119)         ; 9 (9)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|Register_file:rf                                  ; Register_file              ; work         ;
+;    |adder16:alu1|                      ; 19 (0)      ; 0            ; 0          ; 0    ; 0            ; 19 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1                                      ; adder16                    ; work         ;
+;       |Full_Adder:\add:10:ax|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:10:ax                ; Full_Adder                 ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:10:ax|XOR_2:x1       ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:11:ax|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:11:ax                ; Full_Adder                 ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:11:ax|XOR_2:x1       ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:12:ax|          ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:12:ax                ; Full_Adder                 ; work         ;
+;          |AND_2:a1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:12:ax|AND_2:a1       ; AND_2                      ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:12:ax|XOR_2:x1       ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:13:ax|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:13:ax                ; Full_Adder                 ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:13:ax|XOR_2:x1       ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:14:ax|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:14:ax                ; Full_Adder                 ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:14:ax|XOR_2:x1       ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:15:ax|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:15:ax                ; Full_Adder                 ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:15:ax|XOR_2:x1       ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:1:ax|           ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:1:ax                 ; Full_Adder                 ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:1:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:2:ax|           ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:2:ax                 ; Full_Adder                 ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:2:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:3:ax|           ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:3:ax                 ; Full_Adder                 ; work         ;
+;          |AND_2:a1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:3:ax|AND_2:a1        ; AND_2                      ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:3:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:4:ax|           ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:4:ax                 ; Full_Adder                 ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:4:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:5:ax|           ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:5:ax                 ; Full_Adder                 ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:5:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:6:ax|           ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:6:ax                 ; Full_Adder                 ; work         ;
+;          |AND_2:a1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:6:ax|AND_2:a1        ; AND_2                      ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:6:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:7:ax|           ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:7:ax                 ; Full_Adder                 ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:7:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:8:ax|           ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:8:ax                 ; Full_Adder                 ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:8:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:9:ax|           ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:9:ax                 ; Full_Adder                 ; work         ;
+;          |AND_2:a1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:9:ax|AND_2:a1        ; AND_2                      ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu1|Full_Adder:\add:9:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;    |adder16:alu3|                      ; 30 (0)      ; 0            ; 0          ; 0    ; 0            ; 30 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3                                      ; adder16                    ; work         ;
+;       |Full_Adder:\add:0:ax|           ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:0:ax                 ; Full_Adder                 ; work         ;
+;          |HALF_ADDER:ha|               ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:0:ax|HALF_ADDER:ha   ; HALF_ADDER                 ; work         ;
+;       |Full_Adder:\add:10:ax|          ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:10:ax                ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:10:ax|OR_2:o1        ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:10:ax|XOR_2:x1       ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:11:ax|          ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:11:ax                ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:11:ax|OR_2:o1        ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:11:ax|XOR_2:x1       ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:12:ax|          ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:12:ax                ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:12:ax|OR_2:o1        ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:12:ax|XOR_2:x1       ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:13:ax|          ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:13:ax                ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:13:ax|OR_2:o1        ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:13:ax|XOR_2:x1       ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:14:ax|          ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:14:ax                ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:14:ax|OR_2:o1        ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:14:ax|XOR_2:x1       ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:15:ax|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:15:ax                ; Full_Adder                 ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:15:ax|XOR_2:x1       ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:1:ax|           ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:1:ax                 ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:1:ax|OR_2:o1         ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:1:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:2:ax|           ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:2:ax                 ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:2:ax|OR_2:o1         ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:2:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:3:ax|           ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:3:ax                 ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:3:ax|OR_2:o1         ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:3:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:4:ax|           ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:4:ax                 ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:4:ax|OR_2:o1         ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:4:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:5:ax|           ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:5:ax                 ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:5:ax|OR_2:o1         ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:5:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:6:ax|           ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:6:ax                 ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:6:ax|OR_2:o1         ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:6:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:7:ax|           ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:7:ax                 ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:7:ax|OR_2:o1         ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:7:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:8:ax|           ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:8:ax                 ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:8:ax|OR_2:o1         ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:8:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;       |Full_Adder:\add:9:ax|           ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:9:ax                 ; Full_Adder                 ; work         ;
+;          |OR_2:o1|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:9:ax|OR_2:o1         ; OR_2                       ; work         ;
+;          |XOR_2:x1|                    ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|adder16:alu3|Full_Adder:\add:9:ax|XOR_2:x1        ; XOR_2                      ; work         ;
+;    |alu:alu2|                          ; 36 (21)     ; 0            ; 0          ; 0    ; 0            ; 36 (21)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2                                          ; alu                        ; work         ;
+;       |adder16:c1|                     ; 14 (0)      ; 0            ; 0          ; 0    ; 0            ; 14 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1                               ; adder16                    ; work         ;
+;          |Full_Adder:\add:10:ax|       ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:10:ax         ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:10:ax|OR_2:o1 ; OR_2                       ; work         ;
+;          |Full_Adder:\add:11:ax|       ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:11:ax         ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:11:ax|OR_2:o1 ; OR_2                       ; work         ;
+;          |Full_Adder:\add:12:ax|       ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:12:ax         ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:12:ax|OR_2:o1 ; OR_2                       ; work         ;
+;          |Full_Adder:\add:13:ax|       ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:13:ax         ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:13:ax|OR_2:o1 ; OR_2                       ; work         ;
+;          |Full_Adder:\add:14:ax|       ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:14:ax         ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:14:ax|OR_2:o1 ; OR_2                       ; work         ;
+;          |Full_Adder:\add:1:ax|        ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:1:ax          ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:1:ax|OR_2:o1  ; OR_2                       ; work         ;
+;          |Full_Adder:\add:2:ax|        ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:2:ax          ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:2:ax|OR_2:o1  ; OR_2                       ; work         ;
+;          |Full_Adder:\add:3:ax|        ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:3:ax          ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:3:ax|OR_2:o1  ; OR_2                       ; work         ;
+;          |Full_Adder:\add:4:ax|        ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:4:ax          ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:4:ax|OR_2:o1  ; OR_2                       ; work         ;
+;          |Full_Adder:\add:5:ax|        ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:5:ax          ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:5:ax|OR_2:o1  ; OR_2                       ; work         ;
+;          |Full_Adder:\add:6:ax|        ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:6:ax          ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:6:ax|OR_2:o1  ; OR_2                       ; work         ;
+;          |Full_Adder:\add:7:ax|        ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:7:ax          ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:7:ax|OR_2:o1  ; OR_2                       ; work         ;
+;          |Full_Adder:\add:8:ax|        ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:8:ax          ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:8:ax|OR_2:o1  ; OR_2                       ; work         ;
+;          |Full_Adder:\add:9:ax|        ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:9:ax          ; Full_Adder                 ; work         ;
+;             |OR_2:o1|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|adder16:c1|Full_Adder:\add:9:ax|OR_2:o1  ; OR_2                       ; work         ;
+;       |nandbit:c2|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|alu:alu2|nandbit:c2                               ; nandbit                    ; work         ;
+;    |bin_enc:rrbe|                      ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|bin_enc:rrbe                                      ; bin_enc                    ; work         ;
+;    |forwarding_logic:forwarding_block| ; 80 (80)     ; 0            ; 0          ; 0    ; 0            ; 80 (80)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|forwarding_logic:forwarding_block                 ; forwarding_logic           ; work         ;
+;    |fsm_ex:fsm_ex_ins|                 ; 17 (17)     ; 1            ; 0          ; 0    ; 0            ; 16 (16)      ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|fsm_ex:fsm_ex_ins                                 ; fsm_ex                     ; work         ;
+;    |fsm_id:fsm_id_ins|                 ; 6 (6)       ; 1            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|fsm_id:fsm_id_ins                                 ; fsm_id                     ; work         ;
+;    |fsm_if:fsm_if_ins|                 ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|fsm_if:fsm_if_ins                                 ; fsm_if                     ; work         ;
+;    |fsm_mem:fsm_mem_ins|               ; 6 (6)       ; 1            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|fsm_mem:fsm_mem_ins                               ; fsm_mem                    ; work         ;
+;    |fsm_rr:fsm_rr_ins|                 ; 22 (22)     ; 3            ; 0          ; 0    ; 0            ; 19 (19)      ; 0 (0)             ; 3 (3)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|fsm_rr:fsm_rr_ins                                 ; fsm_rr                     ; work         ;
+;    |fsm_wb:fsm_wb_ins|                 ; 3 (3)       ; 1            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|fsm_wb:fsm_wb_ins                                 ; fsm_wb                     ; work         ;
+;    |pri_enc:rrpe2|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|pri_enc:rrpe2                                     ; pri_enc                    ; work         ;
+;    |pri_enc:rrpe|                      ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |IITB_proc|pri_enc:rrpe                                      ; pri_enc                    ; work         ;
++----------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------------------+----------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------+
+; State Machine - |IITB_proc|fsm_rr:fsm_rr_ins|fsm_state_symbol                         ;
++---------------------+---------------------+---------------------+---------------------+
+; Name                ; fsm_state_symbol.S2 ; fsm_state_symbol.S0 ; fsm_state_symbol.S1 ;
++---------------------+---------------------+---------------------+---------------------+
+; fsm_state_symbol.S1 ; 0                   ; 0                   ; 0                   ;
+; fsm_state_symbol.S0 ; 0                   ; 1                   ; 1                   ;
+; fsm_state_symbol.S2 ; 1                   ; 0                   ; 1                   ;
++---------------------+---------------------+---------------------+---------------------+
+
+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; Register8:rrt1|R[7]                   ; Stuck at GND due to stuck port data_in ;
+; Register16:ifid_ir|R[11]              ; Merged with Register16:ifid_ir|R[2]    ;
+; Register16:idrr_ir|R[11]              ; Merged with Register16:idrr_ir|R[2]    ;
+; Total Number of Removed Registers = 3 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -195,24 +589,228 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 2766  ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Synchronous Load   ; 35    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 2735  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |forwarding_logic|fwd_mux1 ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |forwarding_logic|fwd_mux2 ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; Register_file:rf|RegisterF[5][2]       ; 2       ;
+; Register_file:rf|RegisterF[6][2]       ; 2       ;
+; Register_file:rf|RegisterF[4][2]       ; 2       ;
+; Register_file:rf|RegisterF[1][0]       ; 2       ;
+; Register_file:rf|RegisterF[3][0]       ; 2       ;
+; Register_file:rf|RegisterF[5][0]       ; 2       ;
+; Register_file:rf|RegisterF[6][1]       ; 2       ;
+; Register_file:rf|RegisterF[2][1]       ; 2       ;
+; Register_file:rf|RegisterF[3][1]       ; 2       ;
+; Total number of inverted registers = 9 ;         ;
++----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 9:1                ; 16 bits   ; 96 LEs        ; 96 LEs               ; 0 LEs                  ; Yes        ; |IITB_proc|Register16:rrex_d2|R[4]                       ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |IITB_proc|forwarding_logic:forwarding_block|fwd_mux1[1] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |IITB_proc|forwarding_logic:forwarding_block|fwd_mux2[1] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |IITB_proc|fsm_rr:fsm_rr_ins|idm42_var                   ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |IITB_proc|fsm_mem:fsm_mem_ins|wr_mem                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |IITB_proc|fsm_mem:fsm_mem_ins|memwb0                    ;
+; 9:1                ; 16 bits   ; 96 LEs        ; 96 LEs               ; 0 LEs                  ; No         ; |IITB_proc|Mux16_4_1:rrm2|Mux1_4_1:\muxg4:3:mx|y         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "Mux16_8_1:fwd_mux2_block" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; f    ; Input ; Info     ; Stuck at GND               ;
+; g    ; Input ; Info     ; Stuck at GND               ;
+; h    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "Mux16_8_1:fwd_mux1_block" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; f    ; Input ; Info     ; Stuck at GND               ;
+; g    ; Input ; Info     ; Stuck at GND               ;
+; h    ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Register16:wbdone_addr"                                                                           ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port               ; Type   ; Severity ; Details                                                                             ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+; reg_dataout[15..3] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "Mux16_2_1:mem_acess_m" ;
++------+-------+----------+-------------------------+
+; Port ; Type  ; Severity ; Details                 ;
++------+-------+----------+-------------------------+
+; a    ; Input ; Info     ; Stuck at GND            ;
++------+-------+----------+-------------------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "Mux16_4_1:memm1" ;
++------+-------+----------+-------------------+
+; Port ; Type  ; Severity ; Details           ;
++------+-------+----------+-------------------+
+; d    ; Input ; Info     ; Stuck at GND      ;
++------+-------+----------+-------------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "Mux16_8_1:exm7" ;
++------+-------+----------+------------------+
+; Port ; Type  ; Severity ; Details          ;
++------+-------+----------+------------------+
+; f    ; Input ; Info     ; Stuck at GND     ;
+; g    ; Input ; Info     ; Stuck at GND     ;
+; h    ; Input ; Info     ; Stuck at GND     ;
++------+-------+----------+------------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "Mux16_4_1:exm6" ;
++------+-------+----------+------------------+
+; Port ; Type  ; Severity ; Details          ;
++------+-------+----------+------------------+
+; d    ; Input ; Info     ; Stuck at GND     ;
++------+-------+----------+------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "adder16:alu3"                                                                          ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; sum[16] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "Mux16_2_1:exm4" ;
++----------+-------+----------+--------------+
+; Port     ; Type  ; Severity ; Details      ;
++----------+-------+----------+--------------+
+; b[15..1] ; Input ; Info     ; Stuck at GND ;
+; b[0]     ; Input ; Info     ; Stuck at VCC ;
++----------+-------+----------+--------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "Mux16_4_1:exm2" ;
++----------+-------+----------+--------------+
+; Port     ; Type  ; Severity ; Details      ;
++----------+-------+----------+--------------+
+; a[15..1] ; Input ; Info     ; Stuck at GND ;
+; a[0]     ; Input ; Info     ; Stuck at VCC ;
+; d        ; Input ; Info     ; Stuck at GND ;
++----------+-------+----------+--------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "Mux16_4_1:exm1" ;
++------+-------+----------+------------------+
+; Port ; Type  ; Severity ; Details          ;
++------+-------+----------+------------------+
+; d    ; Input ; Info     ; Stuck at GND     ;
++------+-------+----------+------------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "Register8:rrt1"  ;
++-----------+-------+----------+--------------+
+; Port      ; Type  ; Severity ; Details      ;
++-----------+-------+----------+--------------+
+; reg_wrbar ; Input ; Info     ; Stuck at GND ;
++-----------+-------+----------+--------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "Mux16_8_1:rrm4" ;
++----------+-------+----------+--------------+
+; Port     ; Type  ; Severity ; Details      ;
++----------+-------+----------+--------------+
+; a[15..3] ; Input ; Info     ; Stuck at GND ;
+; b[15..3] ; Input ; Info     ; Stuck at GND ;
+; c[15..3] ; Input ; Info     ; Stuck at GND ;
+; e[15..3] ; Input ; Info     ; Stuck at GND ;
+; f[15..3] ; Input ; Info     ; Stuck at GND ;
+; g        ; Input ; Info     ; Stuck at GND ;
+; h        ; Input ; Info     ; Stuck at GND ;
++----------+-------+----------+--------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "Mux16_4_1:rrm2" ;
++------+-------+----------+------------------+
+; Port ; Type  ; Severity ; Details          ;
++------+-------+----------+------------------+
+; d    ; Input ; Info     ; Stuck at GND     ;
++------+-------+----------+------------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "Mux16_4_1:idm1" ;
++---------+-------+----------+---------------+
+; Port    ; Type  ; Severity ; Details       ;
++---------+-------+----------+---------------+
+; b[6..0] ; Input ; Info     ; Stuck at GND  ;
+; d       ; Input ; Info     ; Stuck at GND  ;
++---------+-------+----------+---------------+
+
+
++----------------------------------------------+
+; Port Connectivity Checks: "MemCode:memc"     ;
++------------+-------+----------+--------------+
+; Port       ; Type  ; Severity ; Details      ;
++------------+-------+----------+--------------+
+; mem_datain ; Input ; Info     ; Stuck at GND ;
+; mem_wrbar  ; Input ; Info     ; Stuck at VCC ;
++------------+-------+----------+--------------+
+
+
++---------------------------------------------------------------+
+; Port Connectivity Checks: "adder16:alu1|Full_Adder:\add:0:ax" ;
++------+-------+----------+-------------------------------------+
+; Port ; Type  ; Severity ; Details                             ;
++------+-------+----------+-------------------------------------+
+; cin  ; Input ; Info     ; Stuck at GND                        ;
++------+-------+----------+-------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "adder16:alu1"                                                                              ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; in_b[15..1] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; in_b[0]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; sum[16]     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -221,38 +819,166 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-    Info: Processing started: Sat Nov  2 21:24:07 2019
+    Info: Processing started: Sun Nov  3 02:30:55 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ee309_project1 -c iitb-risc
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 0 design units, including 0 entities, in source file hazard_detection_unit.vhdl
+Warning (12019): Can't analyze file -- file hazard_detection_unit.vhdl is missing
+Info (12021): Found 2 design units, including 1 entities, in source file Mux1_2_1.vhdl
+    Info (12022): Found design unit 1: Mux1_2_1-struct File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux1_2_1.vhdl Line: 11
+    Info (12023): Found entity 1: Mux1_2_1 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux1_2_1.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file Memory_asyncread_syncwrite.vhd
+    Info (12022): Found design unit 1: Memory_asyncread_syncwrite-Form File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Memory_asyncread_syncwrite.vhd Line: 18
+    Info (12023): Found entity 1: Memory_asyncread_syncwrite File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Memory_asyncread_syncwrite.vhd Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file MemCode.vhdl
+    Info (12022): Found design unit 1: MemCode-Form File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/MemCode.vhdl Line: 18
+    Info (12023): Found entity 1: MemCode File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/MemCode.vhdl Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file IITB_proc.vhdl
+    Info (12022): Found design unit 1: IITB_proc-Form File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 14
+    Info (12023): Found entity 1: IITB_proc File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 9
+Info (12021): Found 17 design units, including 8 entities, in source file Gates.vhdl
+    Info (12022): Found design unit 1: Gates File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 3
+    Info (12022): Found design unit 2: INVERTER-Equations File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 45
+    Info (12022): Found design unit 3: AND_2-Equations File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 57
+    Info (12022): Found design unit 4: NAND_2-Equations File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 68
+    Info (12022): Found design unit 5: OR_2-Equations File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 79
+    Info (12022): Found design unit 6: NOR_2-Equations File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 90
+    Info (12022): Found design unit 7: XOR_2-Equations File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 102
+    Info (12022): Found design unit 8: XNOR_2-Equations File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 113
+    Info (12022): Found design unit 9: HALF_ADDER-Equations File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 124
+    Info (12023): Found entity 1: INVERTER File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 41
+    Info (12023): Found entity 2: AND_2 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 53
+    Info (12023): Found entity 3: NAND_2 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 64
+    Info (12023): Found entity 4: OR_2 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 75
+    Info (12023): Found entity 5: NOR_2 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 86
+    Info (12023): Found entity 6: XOR_2 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 98
+    Info (12023): Found entity 7: XNOR_2 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 109
+    Info (12023): Found entity 8: HALF_ADDER File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Gates.vhdl Line: 120
+Info (12021): Found 2 design units, including 1 entities, in source file fsm_wb.vhdl
+    Info (12022): Found design unit 1: fsm_wb-Behave File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_wb.vhdl Line: 10
+    Info (12023): Found entity 1: fsm_wb File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_wb.vhdl Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file fsm_rr.vhdl
+    Info (12022): Found design unit 1: fsm_rr-Behave File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_rr.vhdl Line: 12
+    Info (12023): Found entity 1: fsm_rr File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_rr.vhdl Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file fsm_mem.vhdl
+    Info (12022): Found design unit 1: fsm_mem-Behave File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_mem.vhdl Line: 12
+    Info (12023): Found entity 1: fsm_mem File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_mem.vhdl Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file fsm_if.vhdl
+    Info (12022): Found design unit 1: fsm_if-Behave File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_if.vhdl Line: 11
+    Info (12023): Found entity 1: fsm_if File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_if.vhdl Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file RegisterRead.vhdl
+    Info (12022): Found design unit 1: RegisterRead-Form File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/RegisterRead.vhdl Line: 19
+    Info (12023): Found entity 1: RegisterRead File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/RegisterRead.vhdl Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file Register_file.vhdl
+    Info (12022): Found design unit 1: Register_file-Form File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register_file.vhdl Line: 20
+    Info (12023): Found entity 1: Register_file File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register_file.vhdl Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file Register16.vhdl
+    Info (12022): Found design unit 1: Register16-Form File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register16.vhdl Line: 19
+    Info (12023): Found entity 1: Register16 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register16.vhdl Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file Register8.vhdl
+    Info (12022): Found design unit 1: Register8-Form File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register8.vhdl Line: 19
+    Info (12023): Found entity 1: Register8 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register8.vhdl Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file Register1def1.vhdl
+    Info (12022): Found design unit 1: Register1def1-Form File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register1def1.vhdl Line: 19
+    Info (12023): Found entity 1: Register1def1 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register1def1.vhdl Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file Register1.vhdl
+    Info (12022): Found design unit 1: Register1-Form File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register1.vhdl Line: 19
+    Info (12023): Found entity 1: Register1 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Register1.vhdl Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file pri_enc.vhdl
+    Info (12022): Found design unit 1: pri_enc-Form File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/pri_enc.vhdl Line: 14
+    Info (12023): Found entity 1: pri_enc File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/pri_enc.vhdl Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file nandbit.vhdl
+    Info (12022): Found design unit 1: nandbit-Struct File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/nandbit.vhdl Line: 10
+    Info (12023): Found entity 1: nandbit File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/nandbit.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file Mux16_8_1.vhdl
+    Info (12022): Found design unit 1: Mux16_8_1-behave File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux16_8_1.vhdl Line: 14
+    Info (12023): Found entity 1: Mux16_8_1 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux16_8_1.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file Mux16_4_1.vhdl
+    Info (12022): Found design unit 1: Mux16_4_1-behave File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux16_4_1.vhdl Line: 14
+    Info (12023): Found entity 1: Mux16_4_1 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux16_4_1.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file Mux16_2_1.vhdl
+    Info (12022): Found design unit 1: Mux16_2_1-behave File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux16_2_1.vhdl Line: 14
+    Info (12023): Found entity 1: Mux16_2_1 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux16_2_1.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file Mux8_2_1.vhdl
+    Info (12022): Found design unit 1: Mux8_2_1-behave File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux8_2_1.vhdl Line: 14
+    Info (12023): Found entity 1: Mux8_2_1 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux8_2_1.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file Mux3_4_1.vhdl
+    Info (12022): Found design unit 1: Mux3_4_1-behave File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux3_4_1.vhdl Line: 14
+    Info (12023): Found entity 1: Mux3_4_1 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux3_4_1.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file Mux3_2_1.vhdl
+    Info (12022): Found design unit 1: Mux3_2_1-behave File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux3_2_1.vhdl Line: 14
+    Info (12023): Found entity 1: Mux3_2_1 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux3_2_1.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file Mux1_8_1.vhdl
+    Info (12022): Found design unit 1: Mux1_8_1-struct File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux1_8_1.vhdl Line: 11
+    Info (12023): Found entity 1: Mux1_8_1 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux1_8_1.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file Mux1_4_1.vhdl
+    Info (12022): Found design unit 1: Mux1_4_1-struct File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux1_4_1.vhdl Line: 11
+    Info (12023): Found entity 1: Mux1_4_1 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux1_4_1.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file fsm_id.vhdl
+    Info (12022): Found design unit 1: fsm_id-Behave File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_id.vhdl Line: 11
+    Info (12023): Found entity 1: fsm_id File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_id.vhdl Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file fsm_ex.vhdl
+    Info (12022): Found design unit 1: fsm_ex-Behave File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_ex.vhdl Line: 10
+    Info (12023): Found entity 1: fsm_ex File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/fsm_ex.vhdl Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file bin_enc.vhdl
+    Info (12022): Found design unit 1: bin_enc-Form File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/bin_enc.vhdl Line: 14
+    Info (12023): Found entity 1: bin_enc File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/bin_enc.vhdl Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhdl
+    Info (12022): Found design unit 1: alu-Struct File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/alu.vhdl Line: 14
+    Info (12023): Found entity 1: alu File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/alu.vhdl Line: 6
+Info (12021): Found 4 design units, including 2 entities, in source file adder16.vhdl
+    Info (12022): Found design unit 1: Full_Adder-Struct File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/adder16.vhdl Line: 8
+    Info (12022): Found design unit 2: adder16-Struct File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/adder16.vhdl Line: 35
+    Info (12023): Found entity 1: Full_Adder File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/adder16.vhdl Line: 5
+    Info (12023): Found entity 2: adder16 File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/adder16.vhdl Line: 28
 Info (12021): Found 2 design units, including 1 entities, in source file forwarding_logic.vhdl
     Info (12022): Found design unit 1: forwarding_logic-struct File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 17
     Info (12023): Found entity 1: forwarding_logic File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 10
-Info (12127): Elaborating entity "forwarding_logic" for the top level hierarchy
-Warning (21074): Design contains 15 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "rrex_ir[0]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "rrex_ir[1]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "rrex_ir[2]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "rrex_ir[3]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "rrex_ir[4]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "rrex_ir[5]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "exmem_ir[0]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "exmem_ir[1]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "exmem_ir[2]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "memwb_ir[0]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "memwb_ir[1]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "memwb_ir[2]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "wbdone_ir[0]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "wbdone_ir[1]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-    Warning (15610): No output dependent on input pin "wbdone_ir[2]" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/forwarding_logic.vhdl Line: 11
-Info (21057): Implemented 167 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 73 input pins
-    Info (21059): Implemented 6 output pins
-    Info (21061): Implemented 88 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 17 warnings
-    Info: Peak virtual memory: 1210 megabytes
-    Info: Processing ended: Sat Nov  2 21:24:21 2019
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:34
+Info (12127): Elaborating entity "IITB_proc" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at IITB_proc.vhdl(155): object "waste1" assigned a value but never read File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 155
+Warning (10036): Verilog HDL or VHDL warning at IITB_proc.vhdl(169): object "waste2" assigned a value but never read File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 169
+Info (12128): Elaborating entity "Register_file" for hierarchy "Register_file:rf" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 192
+Info (12128): Elaborating entity "Mux16_2_1" for hierarchy "Mux16_2_1:ifm1" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 196
+Info (12128): Elaborating entity "Mux1_2_1" for hierarchy "Mux16_2_1:ifm1|Mux1_2_1:\muxg:15:mx" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux16_2_1.vhdl Line: 22
+Info (12128): Elaborating entity "Register16" for hierarchy "Register16:pc" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 197
+Info (12128): Elaborating entity "adder16" for hierarchy "adder16:alu1" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 198
+Info (12128): Elaborating entity "Full_Adder" for hierarchy "adder16:alu1|Full_Adder:\add:15:ax" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/adder16.vhdl Line: 53
+Info (12128): Elaborating entity "HALF_ADDER" for hierarchy "adder16:alu1|Full_Adder:\add:15:ax|HALF_ADDER:ha" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/adder16.vhdl Line: 12
+Info (12128): Elaborating entity "AND_2" for hierarchy "adder16:alu1|Full_Adder:\add:15:ax|AND_2:a1" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/adder16.vhdl Line: 16
+Info (12128): Elaborating entity "OR_2" for hierarchy "adder16:alu1|Full_Adder:\add:15:ax|OR_2:o1" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/adder16.vhdl Line: 17
+Info (12128): Elaborating entity "XOR_2" for hierarchy "adder16:alu1|Full_Adder:\add:15:ax|XOR_2:x1" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/adder16.vhdl Line: 20
+Info (12128): Elaborating entity "MemCode" for hierarchy "MemCode:memc" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 199
+Info (12128): Elaborating entity "fsm_if" for hierarchy "fsm_if:fsm_if_ins" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 207
+Info (12128): Elaborating entity "Mux16_4_1" for hierarchy "Mux16_4_1:idm1" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 215
+Info (12128): Elaborating entity "Mux1_4_1" for hierarchy "Mux16_4_1:idm1|Mux1_4_1:\muxg4:15:mx" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux16_4_1.vhdl Line: 22
+Info (12128): Elaborating entity "fsm_id" for hierarchy "fsm_id:fsm_id_ins" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 225
+Info (12128): Elaborating entity "pri_enc" for hierarchy "pri_enc:pe1" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 227
+Info (12128): Elaborating entity "Mux16_8_1" for hierarchy "Mux16_8_1:rrm4" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 246
+Info (12128): Elaborating entity "Mux1_8_1" for hierarchy "Mux16_8_1:rrm4|Mux1_8_1:\muxg4:15:mx" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/Mux16_8_1.vhdl Line: 22
+Info (12128): Elaborating entity "Mux3_2_1" for hierarchy "Mux3_2_1:rrm5" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 253
+Info (12128): Elaborating entity "Mux8_2_1" for hierarchy "Mux8_2_1:rrm6" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 254
+Info (12128): Elaborating entity "Register8" for hierarchy "Register8:rrt1" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 255
+Info (12128): Elaborating entity "bin_enc" for hierarchy "bin_enc:rrbe" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 258
+Info (12128): Elaborating entity "fsm_rr" for hierarchy "fsm_rr:fsm_rr_ins" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 263
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu2" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 278
+Info (12128): Elaborating entity "nandbit" for hierarchy "alu:alu2|nandbit:c2" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/alu.vhdl Line: 45
+Info (12128): Elaborating entity "Register1" for hierarchy "Register1:Zflag" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 281
+Info (12128): Elaborating entity "fsm_ex" for hierarchy "fsm_ex:fsm_ex_ins" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 299
+Info (12128): Elaborating entity "Memory_asyncread_syncwrite" for hierarchy "Memory_asyncread_syncwrite:memd" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 310
+Info (12128): Elaborating entity "fsm_mem" for hierarchy "fsm_mem:fsm_mem_ins" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 317
+Info (12128): Elaborating entity "fsm_wb" for hierarchy "fsm_wb:fsm_wb_ins" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 321
+Info (12128): Elaborating entity "forwarding_logic" for hierarchy "forwarding_logic:forwarding_block" File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/IITB_proc.vhdl Line: 347
+Warning (113028): 115 out of 256 addresses are uninitialized. The Quartus Prime software will initialize them to "0". There are 1 warnings found, and 1 warnings are reported. File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/db/iitb-risc.ram0_MemCode_e101eef4.hdl.mif Line: 1
+    Warning (113027): Addresses ranging from 141 to 255 are not initialized File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/db/iitb-risc.ram0_MemCode_e101eef4.hdl.mif Line: 1
+Warning (113028): 115 out of 256 addresses are uninitialized. The Quartus Prime software will initialize them to "0". There are 1 warnings found, and 1 warnings are reported. File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/db/iitb-risc.ram0_Memory_asyncread_syncwrite_347a8b0d.hdl.mif Line: 1
+    Warning (113027): Addresses ranging from 141 to 255 are not initialized File: /home/preetam/Desktop/Academics/Sem 5/EE309/Project/EE309/project1/db/iitb-risc.ram0_Memory_asyncread_syncwrite_347a8b0d.hdl.mif Line: 1
+Info (21057): Implemented 5207 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 5189 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
+    Info: Peak virtual memory: 1225 megabytes
+    Info: Processing ended: Sun Nov  3 02:31:20 2019
+    Info: Elapsed time: 00:00:25
+    Info: Total CPU time (on all processors): 00:00:42
 
 

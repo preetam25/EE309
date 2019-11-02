@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "MAX V"
 set_global_assignment -name DEVICE 5M1270ZT144C5
-set_global_assignment -name TOP_LEVEL_ENTITY forwarding_logic
+set_global_assignment -name TOP_LEVEL_ENTITY IITB_proc
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.0.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:43:00  OCTOBER 31, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION 16.0.0
@@ -50,6 +50,36 @@ set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name VHDL_FILE hazard_detection_unit.vhdl
-set_global_assignment -name VHDL_FILE forwarding_logic.vhdl
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STILL AIR"
+set_global_assignment -name VHDL_FILE hazard_detection_unit.vhdl
+set_global_assignment -name VHDL_FILE Mux1_2_1.vhdl
+set_global_assignment -name VHDL_FILE Memory_asyncread_syncwrite.vhd
+set_global_assignment -name VHDL_FILE MemCode.vhdl
+set_global_assignment -name VHDL_FILE IITB_proc.vhdl
+set_global_assignment -name VHDL_FILE Gates.vhdl
+set_global_assignment -name VHDL_FILE fsm_wb.vhdl
+set_global_assignment -name VHDL_FILE fsm_rr.vhdl
+set_global_assignment -name VHDL_FILE fsm_mem.vhdl
+set_global_assignment -name VHDL_FILE fsm_if.vhdl
+set_global_assignment -name VHDL_FILE RegisterRead.vhdl
+set_global_assignment -name VHDL_FILE Register_file.vhdl
+set_global_assignment -name VHDL_FILE Register16.vhdl
+set_global_assignment -name VHDL_FILE Register8.vhdl
+set_global_assignment -name VHDL_FILE Register1def1.vhdl
+set_global_assignment -name VHDL_FILE Register1.vhdl
+set_global_assignment -name VHDL_FILE pri_enc.vhdl
+set_global_assignment -name VHDL_FILE nandbit.vhdl
+set_global_assignment -name VHDL_FILE Mux16_8_1.vhdl
+set_global_assignment -name VHDL_FILE Mux16_4_1.vhdl
+set_global_assignment -name VHDL_FILE Mux16_2_1.vhdl
+set_global_assignment -name VHDL_FILE Mux8_2_1.vhdl
+set_global_assignment -name VHDL_FILE Mux3_4_1.vhdl
+set_global_assignment -name VHDL_FILE Mux3_2_1.vhdl
+set_global_assignment -name VHDL_FILE Mux1_8_1.vhdl
+set_global_assignment -name VHDL_FILE Mux1_4_1.vhdl
+set_global_assignment -name VHDL_FILE fsm_id.vhdl
+set_global_assignment -name VHDL_FILE fsm_ex.vhdl
+set_global_assignment -name VHDL_FILE bin_enc.vhdl
+set_global_assignment -name VHDL_FILE alu.vhdl
+set_global_assignment -name VHDL_FILE adder16.vhdl
+set_global_assignment -name VHDL_FILE forwarding_logic.vhdl

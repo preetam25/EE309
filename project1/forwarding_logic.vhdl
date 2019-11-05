@@ -8,7 +8,7 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
 entity forwarding_logic is
-	port (rrex_ir, exmem_ir, memwb_ir, wbdone_ir: in std_logic_vector(15 downto 0);
+	port (ifm1_out, rrex_ir, exmem_ir, memwb_ir, wbdone_ir: in std_logic_vector(15 downto 0);
 		exmem_addr, memwb_addr, wbdone_addr: in std_logic_vector(2 downto 0);
 		fwd_mux1, fwd_mux2: out std_logic_vector(2 downto 0)
 	);
@@ -65,7 +65,7 @@ constant spl : std_logic_vector(2 downto 0) := "100";
 
 begin
 	
-	fwd_mux1 <= ex when( 
+	fwd_mux1 <= ex when( not(ifm1_out = x"0004") and (
 						   ((exmem_op = add or exmem_op = ndu) 
 						   	and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
 						   	and exmem_c = rrex_a) 
@@ -77,9 +77,9 @@ begin
 						or ((exmem_op = jlr or exmem_op = lhi or exmem_op = jal) 
 							and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
 						   	and exmem_a = rrex_a)	
-					)else
+					))else
 				
-				mem when(
+				mem when( (not(ifm1_out = x"0004") and not(ifm1_out = x"0005")) and (
 						   ((memwb_op = add or memwb_op = ndu) 
 						   	and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
 						   	and memwb_c = rrex_a) 
@@ -95,9 +95,9 @@ begin
 						or ((memwb_op = lm) 
 							and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = sm) 
 						   	and memwb_addr = rrex_a) 
-					)else
+					))else
 				
-				wb when(
+				wb when( (not(ifm1_out = x"0004") and not(ifm1_out = x"0005") and not(ifm1_out = x"0006")) and (
 						   ((wbdone_op = add or wbdone_op = ndu) 
 						   	and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = lm or rrex_op = sm) 
 						   	and wbdone_c = rrex_a) 
@@ -113,7 +113,7 @@ begin
 						or ((wbdone_op = lm) 
 							and (rrex_op = add or rrex_op = ndu or rrex_op = adi or rrex_op = sw or rrex_op = beq or rrex_op = sm) 
 						   	and wbdone_addr = rrex_a)
-					)else
+					))else
 
 				spl when(
 						   ((exmem_op = lw) 
@@ -127,7 +127,7 @@ begin
 
 				actual;
 
-	fwd_mux2 <= ex when( 
+	fwd_mux2 <= ex when( not(ifm1_out = x"0004") and (
 						   ((exmem_op = add or exmem_op = ndu) 
 						   	and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
 						   	and exmem_c = rrex_b) 
@@ -139,9 +139,9 @@ begin
 						or ((exmem_op = jlr or exmem_op = lhi or exmem_op = jal) 
 							and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
 						   	and exmem_a = rrex_b)	
-					)else
+					))else
 				
-				mem when(
+				mem when( (not(ifm1_out = x"0004") and not(ifm1_out = x"0005")) and (
 						   ((memwb_op = add or memwb_op = ndu) 
 						   	and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
 						   	and memwb_c = rrex_b) 
@@ -157,9 +157,9 @@ begin
 						or ((memwb_op = lm) 
 							and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
 						   	and memwb_addr = rrex_b) 
-					)else
+					))else
 				
-				wb when(
+				wb when( (not(ifm1_out = x"0004") and not(ifm1_out = x"0005") and not(ifm1_out = x"0006")) and (
 						   ((wbdone_op = add or wbdone_op = ndu) 
 						   	and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
 						   	and wbdone_c = rrex_b) 
@@ -175,7 +175,7 @@ begin
 						or ((wbdone_op = lm) 
 							and (rrex_op = add or rrex_op = ndu or rrex_op = jlr or rrex_op = lw or rrex_op = sw or rrex_op = beq) 
 						   	and wbdone_addr = rrex_b)
-					)else
+					))else
 
 				spl when(
 						   ((exmem_op = lw) 

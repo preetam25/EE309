@@ -10,7 +10,7 @@ end entity;
 
 architecture Behave of fsm_id is
 
-  type StateSymbol  is (S1,S0);
+  type StateSymbol  is (S1,S0,S2);
   signal fsm_state_symbol: StateSymbol;
 -- constant Z32: std_logic_vector(31 downto 0) := (others => '0');
 
@@ -35,8 +35,10 @@ process(r,clk,fsm_state_symbol,lmsm,beq,nop_check,instruction,check7)
      -- compute next-state, output
      case fsm_state_symbol is
 	  	    when s0 =>
-			 if (lmsm = '1' or beq = '1' or nop_check = '1') then
-			    nq_var := s1;
+			 if (lmsm = '1') then
+			    nq_var := s2;
+			 elsif(beq = '1' or nop_check = '1')then
+				nq_var := s1;
 			 else
 			    nq_var := s0;
 			end if;
@@ -67,14 +69,25 @@ process(r,clk,fsm_state_symbol,lmsm,beq,nop_check,instruction,check7)
 		       --sgh69_en_var := '1'; 
 				 idrr_en_var := '1';
 	  
-			 if ((nop_check = '0') or (check7 = '1')) then
+			 if ((nop_check = '0')) then
              nq_var := s0;
 	
           else
              nq_var := s1;
 					
 			end if;
-			
+		when s2 => 
+			       nop_detect_var := '1';
+		       --sgh69_en_var := '1'; 
+				 idrr_en_var := '1';
+					
+			 if ((check7 = '1')) then
+             nq_var := s0;
+	
+          else
+             nq_var := s2;
+					
+			end if;
 
        when others => null;
 

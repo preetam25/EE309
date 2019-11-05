@@ -5,7 +5,7 @@ use ieee.std_logic_1164.all;
 		port ( instruction: in std_logic_vector(15 downto 0);
 	clk,r,nop_check,beq: in std_logic;
 	--memwb1,memwb0,memwb_addr_en,memwb_val_en,nop_detect,wr_mem,sw_mem: out std_logic);
-	  memwb1,memwb0,memwb_en,nop_detect,wr_mem,mem_access: out std_logic);
+	  memwb1,memwb0,memwb_en,nop_detect,wr_mem,mem_access,pc_mem_en: out std_logic);
 
 end entity;
 
@@ -19,10 +19,10 @@ begin
 process(r,clk,fsm_state_symbol,nop_check,beq,instruction)
      variable nq_var : StateSymbol;
 	 -- variable memwb1_var,memwb0_var,memwb_addr_en_var,memwb_val_en_var,nop_detect_var,wr_mem_var,sw_mem_var: std_logic;
-	 variable memwb1_var,memwb0_var,memwb_en_var,nop_detect_var,wr_mem_var,mem_access_var: std_logic;
+	 variable memwb1_var,memwb0_var,memwb_en_var,nop_detect_var,wr_mem_var,mem_access_var,pc_mem_en_var: std_logic;
 
   begin
-
+pc_mem_en_var := '1';
 nq_var := fsm_state_symbol; 
 memwb1_var := '1';
 memwb0_var := '0';
@@ -42,7 +42,10 @@ mem_access_var := '0';
 					 else
 						 nq_var := s0;
 					end if;	 
-			
+				 
+			if(instruction(15 downto 12) = "1000" or instruction(15 downto 12) = "1001") then 
+				pc_mem_en_var := '0';
+			end if;
 			if (instruction(15 downto 12) = "0100" or instruction(15 downto 12) = "0110" ) then
 					memwb1_var := '0';
 					mem_access_var := '1';
@@ -57,7 +60,7 @@ mem_access_var := '0';
 			elsif (instruction(15 downto 12) = "1100" ) then
 					--memwb_val_en_var := '0';
 					
-			elsif (instruction(15 downto 12) = "1000" or instruction(15 downto 12) = "1001"  ) then
+			elsif (instruction(15 downto 12) = "1000" or instruction(15 downto 12) = "1001" or instruction(15 downto 12) = "1100" ) then
 					memwb1_var := '0';
 					memwb0_var := '1';
 					--mem_access_var := '1';
@@ -80,6 +83,10 @@ mem_access_var := '0';
 					nop_detect_var := '1';
 					wr_mem_var := '1';
 					mem_access_var := '0';
+--		
+--			 if() then
+--				pc_mem_en_var := '0';
+--			end if;
 	 if (nop_check = '1' or (instruction(15 downto 12) = "1100" and beq = '0') ) then
              nq_var := s1;
 	
@@ -96,7 +103,7 @@ mem_access_var := '0';
 
   
      -- y(k)
-
+pc_mem_en <= pc_mem_en_var;
 memwb1 <= memwb1_var;
 memwb0 <= memwb0_var;
 --memwb_addr_en <= memwb_addr_en_var;

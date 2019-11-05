@@ -10,7 +10,7 @@ end entity;
 
 architecture Behave of fsm_if is
 
-  type StateSymbol  is (S1,S0);
+  type StateSymbol  is (reset,S1,S0);
   signal fsm_state_symbol: StateSymbol;
 -- constant Z32: std_logic_vector(31 downto 0) := (others => '0');
 
@@ -40,9 +40,9 @@ process(r,clk,fsm_state_symbol,lmsm,beq,check7,instruction)
 					nq_var := s0;
 
           end if;
-			if(beq = '1')then
-				pc_mux_var :='1';
-			end if;
+			--if(beq = '1')then
+			--	pc_mux_var :='1';
+			--end if;
 
 	    when s1 =>
 				pc_mux_var := '1';
@@ -56,7 +56,15 @@ process(r,clk,fsm_state_symbol,lmsm,beq,check7,instruction)
 				else
 						nq_var := s1;
 				end if;
-
+		when reset => 
+			nq_var := s0;
+			
+				pc_mux_var := '1';
+				pc_en_var := '1';
+				--ifid_ir_en_var := '1';
+				--ifid_pc_en_var := '1';
+				ifid_en_var := '1';
+				nop_detect_var := '1';
        when others => null;
 
      end case;
@@ -75,7 +83,7 @@ process(r,clk,fsm_state_symbol,lmsm,beq,check7,instruction)
 	  
      if(rising_edge(clk)) then
           if (r = '1') then
-             fsm_state_symbol <= s1;
+             fsm_state_symbol <=reset;
           else
              fsm_state_symbol <= nq_var;
           end if;

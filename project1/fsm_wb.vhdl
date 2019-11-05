@@ -16,7 +16,7 @@ architecture Behave of fsm_wb is
 begin
 process(r,clk,fsm_state_symbol,nop_check,instruction)
      variable nq_var : StateSymbol;
-	  variable rf_wr_var, wbdone_en_var: std_logic;
+	    variable rf_wr_var, wbdone_en_var: std_logic;
 
   begin
 
@@ -38,8 +38,7 @@ wbdone_en_var := '0';
 	    when s1 =>
 				rf_wr_var := '1';
         wbdone_en_var := '1';
-
-
+  
 	 if (nop_check = '1' or instruction(15 downto 12) = "0101" or instruction(15 downto 12) = "0111" or instruction(15 downto 12) = "1100") then
              nq_var := s1;
 	
@@ -59,6 +58,7 @@ wbdone_en_var := '0';
 
 rf_wr <= rf_wr_var;
 wbdone_en <= wbdone_en_var;
+
      if(rising_edge(clk)) then
           if (r = '1') then
              fsm_state_symbol <= s1;

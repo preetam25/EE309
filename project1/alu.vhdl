@@ -5,7 +5,7 @@ use work.Gates.all;
  
 entity alu is 
 port (A,B :in std_logic_vector(15 downto 0) ;
-		op : in std_logic;
+		op,beq : in std_logic;
 		C : out std_logic_vector(15 downto 0);
 		Z ,Cout: out std_logic);
 end alu;
@@ -13,12 +13,13 @@ end alu;
 
 architecture Struct of alu is 
 
-component adder16 is
+component adder16Cin is
   port (
 		in_a : in std_logic_vector (15 downto 0);
 		in_b : in std_logic_vector (15 downto 0);
+		cin : in std_logic;
 		sum : out std_logic_vector (16 downto 0));
-end component adder16;
+end component adder16Cin;
 
 component nandbit is 
 port (A ,B : in std_logic_vector(15 downto 0);
@@ -37,11 +38,13 @@ y : out std_logic );
 end component two_to_one_mux;
 
 
-signal t1,t2,t3,t7:std_logic_vector(15 downto 0);
-signal t4,t5,t6:std_logic ;
+signal t1,t2,t3,t7,tB:std_logic_vector(15 downto 0);
+signal t4,t5,t6,t8:std_logic ;
 
 begin 
-	c1: adder16 port map (in_a => A, in_b=>B,sum(15 downto 0) => t1 ,sum(16) => t4);
+	t8 <= beq;
+	tB <= not B when beq = '1' else B;
+	c1: adder16Cin port map (in_a => A, in_b=>tB,cin => t8,sum(15 downto 0) => t1 ,sum(16) => t4);
 	c2: nandbit port map (A,B,t2);
 --c3: two_to_one_mux_16 port map (t1,t2,op,t3); 
 	t3 <= (others => op);

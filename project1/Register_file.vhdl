@@ -19,7 +19,7 @@ end entity;
 
 architecture Form of Register_file is 
 type regarray is array(7 downto 0) of std_logic_vector(15 downto 0);   -- defining a new type
-signal RegisterF: regarray:= (0 => x"0001", 1 => x"0001",2 => x"0002",3 => x"0003",
+signal RegisterF: regarray:= (0 => x"0000", 1 => x"0001",2 => x"0002",3 => x"FFFF",
 4 => x"0004",5 => x"0005",6 => x"0006",7 => x"0000", others => x"0000");
 -- you can use the above mentioned way to initialise the memory with the instructions and the data as required to test your processor
 begin

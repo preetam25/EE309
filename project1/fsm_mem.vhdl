@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 	entity fsm_mem is
-		port ( instruction: in std_logic_vector(15 downto 0);
+		port ( instruction,instruction2: in std_logic_vector(15 downto 0);
 	clk,r,nop_check,beq: in std_logic;
 	--memwb1,memwb0,memwb_addr_en,memwb_val_en,nop_detect,wr_mem,sw_mem: out std_logic);
 	  memwb1,memwb0,memwb_en,nop_detect,wr_mem,mem_access,pc_mem_en: out std_logic);
@@ -16,7 +16,7 @@ architecture Behave of fsm_mem is
 -- constant Z32: std_logic_vector(31 downto 0) := (others => '0');
 
 begin
-process(r,clk,fsm_state_symbol,nop_check,beq,instruction)
+process(r,clk,fsm_state_symbol,nop_check,beq,instruction,instruction2)
      variable nq_var : StateSymbol;
 	 -- variable memwb1_var,memwb0_var,memwb_addr_en_var,memwb_val_en_var,nop_detect_var,wr_mem_var,sw_mem_var: std_logic;
 	 variable memwb1_var,memwb0_var,memwb_en_var,nop_detect_var,wr_mem_var,mem_access_var,pc_mem_en_var: std_logic;
@@ -37,7 +37,7 @@ mem_access_var := '0';
      -- compute next-state, output
      case fsm_state_symbol is
 	  	    when s0 =>
-	 if (nop_check = '1' or (instruction(15 downto 12) = "1100" and beq = '0') ) then
+	 if (nop_check = '1' or (instruction2(15 downto 12) = "1100" and beq = '0') ) then
 						 nq_var := s1;
 					 else
 						 nq_var := s0;
@@ -58,6 +58,8 @@ mem_access_var := '0';
 					--sw_mem_var := '1';
 					
 			elsif (instruction(15 downto 12) = "1100" ) then
+							pc_mem_en_var := '0';
+
 					--memwb_val_en_var := '0';
 					
 			elsif (instruction(15 downto 12) = "1000" or instruction(15 downto 12) = "1001" or instruction(15 downto 12) = "1100" ) then
@@ -83,11 +85,9 @@ mem_access_var := '0';
 					nop_detect_var := '1';
 					wr_mem_var := '1';
 					mem_access_var := '0';
---		
---			 if() then
---				pc_mem_en_var := '0';
+
 --			end if;
-	 if (nop_check = '1' or (instruction(15 downto 12) = "1100" and beq = '0') ) then
+	 if (nop_check = '1' or ((instruction2(15 downto 12) = "1100") and (beq = '0')) ) then
              nq_var := s1;
 	
           else

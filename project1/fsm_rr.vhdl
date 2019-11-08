@@ -47,8 +47,10 @@ rrbyte_select_var := '0';
 			 else
 			    nq_var := s0;
 			end if;	 
-          if (instruction(15 downto 12) = "0001" or instruction(15 downto 12) = "0011" or instruction(15 downto 12) = "0100" ) then
+          if (instruction(15 downto 12) = "0011" or instruction(15 downto 12) = "0100" ) then
 					idm41_var := '1';
+			elsif  (instruction(15 downto 12) = "0001" ) then
+					idm40_var := '1';
 			elsif (instruction(15 downto 12) = "0110" ) then
 					idm42_var := '1';
 					if(check7 = '0') then 

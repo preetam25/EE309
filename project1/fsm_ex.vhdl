@@ -58,8 +58,8 @@ beq_op_var := '0';
 				zeroflag_en_var := '1';
 
 			elsif (instruction(15 downto 12) = "0001" ) then
-					ex11_var := '0';
-					ex10_var := '1';
+					ex11_var := '1';
+					ex10_var := '0';
 					ex21_var := '0';
 					ex20_var := '1'; 
 					carryflag_en_var := '0';
@@ -139,7 +139,7 @@ beq_op_var := '0';
 					nop_detect_var := '1';
 					beq_op_var := '0';
 	  
-			 if (nop_check = '0') then
+			 if (nop_check = '0' or ((instruction2(15 downto 12) = "0010" or instruction2(15 downto 12) = "0000") and instruction2(1 downto 0) = "10" and carry = '0') or ((instruction2(15 downto 12) = "0010" or instruction2(15 downto 12) = "0000") and instruction2(1 downto 0) = "01" and zero = '0')) then
              nq_var := s0;
 	
           else

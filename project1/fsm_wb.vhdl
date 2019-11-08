@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity fsm_wb is
-   port ( instruction: in std_logic_vector(15 downto 0);
+   port ( instruction,instruction2: in std_logic_vector(15 downto 0);
 clk,r,nop_check: in std_logic;
 rf_wr, wbdone_en: out std_logic);
 end entity;
@@ -14,7 +14,7 @@ architecture Behave of fsm_wb is
 -- constant Z32: std_logic_vector(31 downto 0) := (others => '0');
 
 begin
-process(r,clk,fsm_state_symbol,nop_check,instruction)
+process(r,clk,fsm_state_symbol,nop_check,instruction,instruction2)
      variable nq_var : StateSymbol;
 	    variable rf_wr_var, wbdone_en_var: std_logic;
 
@@ -39,7 +39,7 @@ wbdone_en_var := '0';
 				rf_wr_var := '1';
         wbdone_en_var := '1';
   
-	 if (nop_check = '1' or instruction(15 downto 12) = "0101" or instruction(15 downto 12) = "0111" or instruction(15 downto 12) = "1100") then
+	 if (nop_check = '1' or instruction2(15 downto 12) = "0101" or instruction2(15 downto 12) = "0111" or instruction2(15 downto 12) = "1100") then
              nq_var := s1;
 	
           else

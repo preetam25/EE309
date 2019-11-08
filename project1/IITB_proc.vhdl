@@ -113,14 +113,14 @@ ex10,ex11,ex20,ex21,ex30,ex40,ex50,ex60,ex61,ex70,ex71,ex72,exmem_en,nop_detect,
 	 end component;
     
 	 component fsm_mem is
-		port ( instruction: in std_logic_vector(15 downto 0);
+		port ( instruction,instruction2: in std_logic_vector(15 downto 0);
 	clk,r,nop_check,beq: in std_logic;
 	--memwb1,memwb0,memwb_addr_en,memwb_val_en,nop_detect,wr_mem,sw_mem: out std_logic);
 	  memwb1,memwb0,memwb_en,nop_detect,wr_mem,mem_access,pc_mem_en: out std_logic);
 	 end component;
 	 
 	 component fsm_wb is 
-			   port ( instruction: in std_logic_vector(15 downto 0);
+			   port ( instruction,instruction2: in std_logic_vector(15 downto 0);
 clk,r,nop_check: in std_logic;
 rf_wr, wbdone_en: out std_logic);
 	 end component;
@@ -158,11 +158,11 @@ rf_wr, wbdone_en: out std_logic);
 	 signal idrr_pc_out, idrr_ir_out,idrr_pcn_out,idrr_sgh69_out: std_logic_vector(15 downto 0);
 	 signal idm11,idm10,idrr_en,nop_id: std_logic;
 	 
-	 signal rrex_ir_out, rrex_pcn_out, rrex_d1_out, rrex_d2_out, rrex_d3_out, rrex_addr_out: std_logic_vector(15 downto 0);
+	 signal rrex_ir_out, rrex_pcn_out, rrex_d1_out, rrex_d2_out, rrex_d3_out, rrm3x_out, rrm2x_out ,rrex_addr_out: std_logic_vector(15 downto 0);
     signal rrm2_out, rrm3_out, rrm4_out, rrir53,rrir86,rrir119,rrirbepad: std_logic_vector(15 downto 0);
 	 signal rrm5_out, be_out: std_logic_vector(2 downto 0);
 	 signal rrm6_out, rrt1_out, rrpe_out, rrt1_in,rrpe2_out,rrt2_in: std_logic_vector(7 downto 0);
-	 signal rrex_en,nop_rr,rrm21,rrm20, rrm30,rrm42,rrm41,rrm40,rrm50,rrm60,check7,check6: std_logic;
+	 signal rrex_en,nop_rr,rrm21,rrm20, rrm30,rrm42,rrm41,rrm40,rrm50,rrm60,check7,check6, rrm2x0,rrm3x0: std_logic;
     
 	 signal exm1_out, exm2_out, exm3_out, exm4_out, exm5_out, exm6_out, exm7_out, alu2_out, alu3_out: std_logic_vector(15 downto 0);
 	 signal exmem_addr1_out, exmem_addr2_out,exmem_val_out,exmem_pcn_out, exmem_ir_out: std_logic_vector(15 downto 0);
@@ -236,17 +236,17 @@ begin
 	Reg_dataout => rrex_ir_out);
 	rrex_pcn: Register16 port map(Reg_datain => idrr_pcn_out, clk => clock, Reg_wrbar => rrex_en,
 	Reg_dataout => rrex_pcn_out);
-	rrm2: Mux16_4_1 port map(A => rf_d1, B => idrr_pc_out, C => alu3_out, D => Z16,
+	rrm2: Mux16_4_1 port map(A => rrm2x_out, B => idrr_pc_out, C => alu3_out, D => Z16,
 	S1 => rrm21, S0 => rrm20, y => rrm2_out);
-	
-			rrex_d1: Register16 port map(Reg_datain => rrm2_out, clk => clock, Reg_wrbar => rrex_en, 
-			Reg_dataout => rrex_d1_fwd_mux1);
-			
-	rrm3: Mux16_2_1 port map(A => rf_d2, B => rrir119, S0 => rrm30, y=> rrm3_out);
-	
-			rrex_d2: Register16 port map(Reg_datain => rrm3_out, clk => clock, Reg_wrbar => rrex_en,
-			Reg_dataout => rrex_d2_fwd_mux2);
-			
+	rrm2x0 <= rrir119(2) and rrir119(1) and rrir119(0);
+	rrm3x0 <= rrm5_out(2) and rrm5_out(1) and rrm5_out(0);
+	rrm2x: Mux16_2_1 port map(A => rf_d1, B => idrr_pc_out, S0=> rrm2x0, y => rrm2x_out);
+	rrm3x: Mux16_2_1 port map(A => rf_d2, B => idrr_pc_out, S0=> rrm3x0, y => rrm3x_out);
+	rrex_d1: Register16 port map(Reg_datain => rrm2_out, clk => clock, Reg_wrbar => rrex_en, 
+	Reg_dataout => rrex_d1_fwd_mux1);
+	rrm3: Mux16_2_1 port map(A => rrm3x_out, B => rrir119, S0 => rrm30, y=> rrm3_out);
+	rrex_d2: Register16 port map(Reg_datain => rrm3_out, clk => clock, Reg_wrbar => rrex_en,
+	Reg_dataout => rrex_d2_fwd_mux2);
 	rrir53 <= Z13 & idrr_ir_out(5 downto 3);
 	rrir86 <= Z13 & idrr_ir_out(8 downto 6);
 	rrir119 <= Z13 & idrr_ir_out(11 downto 9);
@@ -277,7 +277,7 @@ begin
 	rrbyte_select => rrm60);
 	
 	
-	waste3 <= '1' when (rrex_ir_out(15 downto 14) = "1100") else '0';
+	waste3 <= '1' when (rrex_ir_out(15 downto 12) = "1100") else '0';
 	exm1: Mux16_4_1 port map(A => rrex_addr_out, B => rrex_d2_out, C => rrex_d1_out, D => Z16,
 	S1 => exm11, S0 => exm10, y => exm1_out);
 	exm2: Mux16_4_1 port map(A => O1, B => rrex_d3_out, C => rrex_d2_out, D => Z16,
@@ -305,8 +305,8 @@ begin
 	Reg_dataout => exmem_addr2_out);
 	exmem_val: Register16 port map(Reg_datain => exm7_out, clk => clock, Reg_wrbar => exmem_en,
 	Reg_dataout => exmem_val_out);
-	C_fsm <= C_out or (C_in and C_en);
-	Z_fsm <= Z_out or (Z_in and Z_en);
+	C_fsm <= (C_out and C_en) or (C_in and (not C_en));
+	Z_fsm <= (Z_out and Z_en) or (Z_in and (not Z_en))  ;
 	fsm_ex_ins: fsm_ex port map(instruction => rrex_ir_out,instruction2 => idrr_ir_out, beq => beq_out, clk => clock,
 	r => reset, nop_check => nop_rr,carry => C_fsm, zero => Z_fsm, ex10 =>exm10, ex11 =>exm11, ex20 => exm20,
 	ex21 => exm21, ex30 => exm30, ex40 => exm40,  ex50 => exm50, ex60 => exm60, ex61 => exm61, ex70 => exm70,
@@ -327,10 +327,10 @@ begin
 	Reg_dataout => memwb_val_out);
 	fsm_mem_ins: fsm_mem port map(instruction => exmem_ir_out, clk => clock, r => reset,																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		
 	nop_check => nop_ex, beq => beq_out, memwb1 => memm11, memwb0 => memm10,
-	memwb_en => memwb_en,nop_detect => nop_mem,wr_mem => memd_wrbar,mem_access => mem_access,pc_mem_en =>  pc_mem_en);
+	memwb_en => memwb_en,nop_detect => nop_mem,wr_mem => memd_wrbar,mem_access => mem_access,pc_mem_en =>  pc_mem_en,instruction2 => rrex_ir_out);
 	
 	fsm_wb_ins: fsm_wb port map(instruction => memwb_ir_out, clk => clock, r => reset, nop_check =>  nop_mem,
-	rf_wr => rf_wrbar, wbdone_en => wbdone_en);
+	rf_wr => rf_wrbar, wbdone_en => wbdone_en,instruction2 => exmem_ir_out);
 	
 	output <= memwb_val_out;																																																																																																																										
 	
